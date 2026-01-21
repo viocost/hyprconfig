@@ -1,70 +1,64 @@
 {
     "layer": "top",
-    "position": "bottom",
-    "height": 40,
-    "spacing": 4,
-    
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
-    "modules-center": [],
-    "modules-right": ["custom/usb", "custom/gpu", "memory#swap", "memory#ram", "cpu", "temperature"],
-    
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "all-outputs": false,
-        "active-only": false,
-        "show-special": false,
-        "sort-by-number": true,
-        "format-icons": {
-            "default": "",
-            "active": "",
-            "urgent": ""
-        }
-    },
-    
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 50,
-        "separate-outputs": true
-    },
-    
-    "custom/usb": {
-        "exec": "$SCRIPTS/bar/usb.py",
-        "interval": 6,
-        "format": "{}",
-        "return-type": "json"
-    },
-    
-    "custom/gpu": {
-        "exec": "$SCRIPTS/bar/gpu.pl",
-        "interval": 4,
-        "format": "GPU: {}",
-        "return-type": "json"
-    },
-    
-    "memory#swap": {
-        "interval": 3,
-        "format": "SWAP: {percentage}%",
-        "tooltip-format": "SWAP: {used:0.1f}G / {total:0.1f}G"
-    },
-    
-    "memory#ram": {
-        "interval": 3,
-        "format": "RAM: {percentage}%",
-        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G"
-    },
-    
-    "cpu": {
-        "interval": 1,
-        "format": "CPU: {usage}%",
-        "tooltip": true
-    },
-    
-    "temperature": {
-        "thermal-zone": 0,
-        "critical-threshold": 80,
-        "interval": 1,
-        "format": " {temperatureC}°C",
-        "format-critical": " {temperatureC}°C"
-    }
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+
+    "include": [
+		"~/.config/waybar/modules.jsonc"
+	],
+
+    "modules-left": [
+		"clock",
+		"network", 
+		"bluetooth",
+		"hyprland/window"
+	],
+    "modules-center": [
+		"custom/rofi",
+		"hyprland/workspaces",
+		"group/exit",
+		"custom/wol",
+		"custom/updates",
+		"custom/github"
+	],
+    "modules-right": [
+		"custom/media",
+		"group/hardware",
+		"group/audio",
+		"tray",
+		"custom/swaync"
+	],
+
+	// Group Hardware
+	"group/hardware": {
+		"orientation": "horizontal",
+		"modules":[
+			"temperature",
+			"battery",
+			"power-profiles-daemon",
+			"custom/wl-gammarelay-temperature",
+			"backlight"
+		]
+	},
+
+	// Group IO Audio
+	"group/audio": {
+		"orientation": "horizontal",
+		"modules": [
+			"pulseaudio",
+			"pulseaudio#microphone"
+		]
+	},
+
+	// Group Exit
+	"group/exit": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/power_btn",
+			"custom/lock_screen"
+		]
+	}
 }
