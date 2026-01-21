@@ -8,9 +8,9 @@ killall waybar 2>/dev/null
 sleep 0.5
 
 # Launch top bar
-waybar -c ~/achyprconfig/config/waybar/config-top -s ~/achyprconfig/config/waybar/style.css &
+waybar -c ~/.config/waybar/config-top -s ~/.config/waybar/style.css &
 
-# Launch bottom bar
-waybar -c ~/achyprconfig/config/waybar/config-bottom -s ~/achyprconfig/config/waybar/style.css &
+# Launch bottom bar  
+waybar -c ~/.config/waybar/config-bottom -s ~/.config/waybar/style.css &
 
 echo "Waybar launched with dual bars (top and bottom)"
