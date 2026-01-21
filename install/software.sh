@@ -36,28 +36,28 @@ function makedir() {
 function prompt_install() {
   local question="$1"
   shift
-  
+
   read -p "$question (y/N): " answer
-  
+
   if [[ "${answer,,}" =~ ^y(es)?$ ]]; then
     local current_pm=""
-    
+
     # Parse arguments: package_manager followed by packages until next package manager
     while [ $# -gt 0 ]; do
       case $1 in
-        pacman|yay|pip|npm)
-          current_pm="$1"
-          shift
-          ;;
-        *)
-          if [ -n "$current_pm" ]; then
-            install "$current_pm" "$1"
-          fi
-          shift
-          ;;
+      pacman | yay | pip | npm)
+        current_pm="$1"
+        shift
+        ;;
+      *)
+        if [ -n "$current_pm" ]; then
+          install "$current_pm" "$1"
+        fi
+        shift
+        ;;
       esac
     done
-    
+
     echo "Installation complete!"
   else
     echo "Skipping..."
@@ -69,20 +69,20 @@ pacman=(
   hyprland
   waybar
   rofi-wayland
-  
+
   # Screen sharing / portals (for Google Meet, OBS, etc.)
   xdg-desktop-portal
   xdg-desktop-portal-hyprland
   xdg-desktop-portal-gtk
   pipewire
   wireplumber
-  
+
   # Notification daemon
   mako
-  
+
   # Wallpaper
   hyprpaper
-  
+
   # Apps
   neovim
   chromium
@@ -99,13 +99,13 @@ pacman=(
   qbittorrent
   pinta
   github-cli
-  yazi # terminal file manager
+  yazi      # terminal file manager
   fastfetch # Shows sysinfo in terminal
-  
+
   # Screenshot tool for Wayland
   grim
   slurp
-  
+
   # Utils
   cronie
   brightnessctl
@@ -122,20 +122,20 @@ pacman=(
   zsh
   blueman
   wl-clipboard # Wayland clipboard utility
-  
+
   # Font manager
   gucharmap
-  
+
   # For neovim
   tree-sitter
   tree-sitter-cli
   python-pynvim
   nodejs
-  
+
   # LaTeX
   texlive-bin
   texlive-latexextra
-  
+
   # Wireless tools
   iw
   wireless_tools
@@ -149,12 +149,10 @@ done
 yay=(
   # Steganography
   steghide
-  
+  wlogout
   pcloud-drive
   devour
-  
   slack-desktop
-  
   drawio-desktop
 )
 
