@@ -1,0 +1,6 @@
+#!/bin/bash
+AL_PATH="$HOME/.config/aliases"
+
+for a in $(ls -L $AL_PATH); do
+  source $AL_PATH/$a
+done

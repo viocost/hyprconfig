@@ -1,0 +1,96 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "spacing": 4,
+    
+    "modules-left": ["custom/feed", "clock"],
+    "modules-center": [],
+    "modules-right": ["custom/keyboard-layout", "custom/locks", "pulseaudio", "custom/vpn", "custom/heartbeat", "network", "custom/power-profile", "battery"],
+    
+    "custom/feed": {
+        "exec": "$SCRIPTS/bar/feed.sh",
+        "interval": 2,
+        "format": "{}",
+        "return-type": "json"
+    },
+    
+    "clock": {
+        "format": "{:%A, %d %B <b>%H:%M</b>}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 7
+    },
+    
+    "custom/keyboard-layout": {
+        "exec": "$SCRIPTS/bar/layout.bash",
+        "interval": 1,
+        "format": "{}",
+        "return-type": "json"
+    },
+    
+    "custom/locks": {
+        "exec": "$SCRIPTS/bar/locks.bash",
+        "interval": 1,
+        "format": "{}",
+        "return-type": "json"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    
+    "custom/vpn": {
+        "exec": "$SCRIPTS/bar/vpn-status.sh",
+        "interval": 2,
+        "format": "{}",
+        "return-type": "json"
+    },
+    
+    "custom/heartbeat": {
+        "exec": "$SCRIPTS/bar/heartbeat.sh",
+        "interval": 1,
+        "format": "{}",
+        "return-type": "json"
+    },
+    
+    "network": {
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": " {ipaddr}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
+    },
+    
+    "custom/power-profile": {
+        "exec": "$SCRIPTS/bar/ppd-status",
+        "interval": 5,
+        "format": "{}",
+        "on-click": "$SCRIPTS/bar/power-profiles"
+    },
+    
+    "battery": {
+        "bat": "BAT0",
+        "interval": 30,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    }
+}

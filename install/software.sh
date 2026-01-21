@@ -170,6 +170,9 @@ echo "=== Optional Hardware-Specific Packages ==="
 # NVIDIA drivers (conditional)
 prompt_install "Are you using NVIDIA graphics?" pacman nvidia nvidia-utils nvidia-settings
 
+# Shell enhancements (optional)
+prompt_install "Install zoxide (smart cd) and starship (prompt)?" pacman zoxide starship
+
 echo ""
 
 function docker_permissions() {

@@ -1,0 +1,151 @@
+/* Waybar Style - Based on i3 ArcoLinux Default theme */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu Nerd Font", "Font Awesome 6 Free";
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #2F2F2F;
+    color: #eeeeee;
+}
+
+/* Top bar specific styling */
+window#waybar.top {
+    border-bottom: 2px solid #666666;
+}
+
+/* Bottom bar specific styling */
+window#waybar.bottom {
+    border-top: 2px solid #666666;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background-color: #222222;
+    color: #a9a9a9;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.active {
+    background-color: #5f676a;
+    color: #eeeeee;
+    border-bottom: 3px solid #6790EB;
+}
+
+#workspaces button.urgent {
+    background-color: #d42121;
+    color: #FFFFFF;
+}
+
+#workspaces button:hover {
+    background-color: #5f676a;
+    color: #eeeeee;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#custom-feed,
+#custom-keyboard-layout,
+#custom-locks,
+#custom-vpn,
+#custom-heartbeat,
+#custom-power-profile,
+#custom-usb,
+#custom-gpu,
+#window {
+    padding: 0 10px;
+    margin: 0 3px;
+    background-color: #2F2F2F;
+    color: #eeeeee;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#battery {
+    color: #a9a9a9;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #26a65b;
+}
+
+#battery.warning:not(.charging) {
+    color: #f39c12;
+}
+
+#battery.critical:not(.charging) {
+    color: #e74c3c;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        color: #eeeeee;
+    }
+}
+
+#cpu {
+    color: #A4C2F4;
+}
+
+#memory {
+    color: #9b59b6;
+}
+
+#temperature {
+    color: #f39c12;
+}
+
+#temperature.critical {
+    color: #e74c3c;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+#network {
+    color: #26a65b;
+}
+
+#network.disconnected {
+    color: #e74c3c;
+}
+
+#pulseaudio {
+    color: #eeeeee;
+}
+
+#pulseaudio.muted {
+    color: #666666;
+}
+
+#window {
+    color: #a9a9a9;
+    font-style: italic;
+}
+
+#custom-vpn {
+    color: #407437;
+}
+
+#custom-power-profile {
+    color: #407437;
+}
+
+#custom-gpu {
+    color: #F79494;
+}
+
+#custom-usb {
+    color: #9b59b6;
+}
