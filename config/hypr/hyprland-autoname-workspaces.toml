@@ -1,20 +1,42 @@
 version = "1.2.0"
 
-[format]
-dedup = true
-dedup_inactive_fullscreen = false
-delim = " "
-client = "{icon}{delim}"
-client_active = "<span color='red'>{icon}</span>"
-workspace = "<b><span color='red'>{id}-{name}:</span></b>{delim}{clients}"
-workspace_empty = "<b><span color='yellow'>{id}-{name}:</span></b>{delim}{clients}"
-client_dup = "{icon}{counter_sup}{delim}"
-client_dup_fullscreen = "[{icon}]{delim}{icon}{counter_unfocused_sup}"
-client_fullscreen = "[{icon}]{delim}"
+# [format]
+# Deduplicate icons if enable.
+# A superscripted counter will be added.
+# dedup = false
+# dedup_inactive_fullscreen = false # dedup more
+# window delimiter
+# delim = " "
+# max_clients = 30 # you should not need this
+
+# available formatter:
+# {counter_sup} - superscripted count of clients on the workspace, and simple {counter}, {delim}
+# {icon}, {client}
+# workspace formatter
+# workspace = "{id}:{delim}{clients}" # {id}, {delim} and {clients} are supported
+# workspace_empty = "{id}" # {id}, {delim} and {clients} are supported
+# client formatter
+# client = "{icon}"
+# client_active = "*{icon}*"
+
+# deduplicate client formatter
+# client_fullscreen = "[{icon}]"
+# client_dup = "{client}{counter_sup}"
+# client_dup_fullscreen = "[{icon}]{delim}{icon}{counter_unfocused}"
+# client_dup_active = "*{icon}*{delim}{icon}{counter_unfocused}"
+
+[class]
+# Add your icons mapping
+# use double quote the key and the value
+# take class name from 'hyprctl clients'
+"DEFAULT" = " {class}: {title}"
+"(?i)Kitty" = ""
+"[Ff]irefox" = "browser"
+"(?i)waydroid.*" = "droid"
 
 [class_active]
-DEFAULT="{icon}"
-"(?i)firefox" = "<span color='orange'> {class}</span>"
+DEFAULT = "*{icon}*"
+"(?i)ExampleOneTerm" = "<span foreground='red'>{icon}</span>"
 
 # [initial_class]
 # "DEFAULT" = " {class}: {title}"
@@ -23,21 +45,18 @@ DEFAULT="{icon}"
 # [initial_class_active]
 # "(?i)Kitty" = "*TERM*"
 
+[title_in_class."(?i)kitty"]
+"(?i)neomutt" = "neomutt"
 # regex captures support is supported
-[title_in_class."(?i)foot"]
-"emerge: (.+?/.+?)-.*" = "{match1}"
+# "emerge: (.+?/.+?)-.*" = "{match1}"
 
-[initial_title_in_class."kitty"]
-"zsh" = "Zsh"
-
-[title_in_class."(firefox|chrom.*)"]
-"(?i)youtube" = "ꟳ"
-"(?i)twitch" = "ꟳ"
-
-[title_active."(firefox|chrom.*)"]
+[title_in_class_active."(?i)firefox"]
 "(?i)twitch" = "<span color='purple'>{icon}</span>"
 
 # [title_in_initial_class."(?i)kitty"]
+# "(?i)neomutt" = "neomutt"
+
+# [initial_title_in_class."(?i)kitty"]
 # "(?i)neomutt" = "neomutt"
 
 # [initial_title_in_initial_class."(?i)kitty"]
@@ -48,6 +67,17 @@ DEFAULT="{icon}"
 
 # [initial_title_active."(?i)kitty"]
 # "zsh" = "*Zsh*"
+
+# Add your applications that need to be exclude
+# The key is the class, the value is the title.
+# You can put an empty title to exclude based on
+# class name only, "" make the job.
+[exclude]
+"" = "^$" # prevent displaying icon for empty class
+"(?i)fcitx" = ".*" # will match all title for fcitx
+"(?i)TestApp" = "" # will match all title for TestApp
+aProgram = "^$" # will match null title for aProgram
+"[Ss]team" = "^(Friends List.*)?$" # will match Steam friends list plus all popups (empty titles)
 
 [workspaces_name]
 0 = "zero"
@@ -61,88 +91,3 @@ DEFAULT="{icon}"
 8 = "eight"
 9 = "nine"
 10 = "ten"
-
-[class]
-DEFAULT = ""
-"(?i)firefox" = "<span color='orange'> </span>"
-"(?i)kitty" = ""
-"(?i)alacritty" = ""
-bleachbit = ""
-burp-startburp = ""
-calibre-gui = ""
-"chrome-faolnafnngnfdaknnbpnkhgohbobgegn-default" = ""
-chromium = ""
-"Gimp-2.10" = ""
-code-oss = ""
-cssh = ""
-darktable = ""
-discord = ""
-dmenu-clipboard = ""
-dmenu-pass = ""
-duolingo = ""
-element = ""
-fontforge = ""
-gcr-prompter = ""
-gsimplecalc = ""
-"jetbrains-studio" = ""
-"kak" = ""
-kicad = ""
-"(?i)waydroid.*" = "droid"
-obsidian = ""
-"dmenu-emoji" = ""
-"dmenu-browser" = ""
-"dmenu-pass generator" = ""
-"qalculate-gtk" = ""
-krita = ""
-libreoffice-calc = ""
-libreoffice-impress = ""
-libreoffice-startcenter = ""
-libreoffice-writer = ""
-molotov = ""
-mpv = ""
-neomutt = ""
-nm-connection-editor = ""
-org-ksnip-ksnip = ""
-org-pwmt-zathura = ""
-org-qutebrowser-qutebrowser = ""
-org-telegram-desktop = ""
-paperwork = ""
-pavucontrol = ""
-personal = ""
-plexamp = ""
-qutepreview = ""
-rapid-photo-downloader = ""
-remote-viewer = ""
-sandboxed-tor-browser = ""
-scli = ""
-shopping = ""
-Signal = ""
-slack = ""
-snappergui = ""
-songrec = ""
-spotify = ""
-steam = ""
-streamlink-twitch-gui = ""
-sun-awt-x11-xframepeer = ""
-swappy = ""
-taskwarrior-tui = ""
-telegramdesktop = ""
-".*transmission.*" = ""
-udiskie = ""
-vimiv = ""
-virt-manager = ""
-vlc = ""
-vncviewer = ""
-wayvnc = "󰀄"
-whatsapp-desktop = ""
-whatsapp-nativefier-d52542 = ""
-wire = "󰁀"
-wireshark-gtk = ""
-wlfreerdp = "󰀄"
-work = ""
-xplr = ""
-nemo = ""
-zoom = ""
-
-[exclude]
-"" = "^$" # prevent displaying clients with empty class

@@ -3,23 +3,26 @@
     "position": "top",
     "height": 40,
     "spacing": 4,
-    
-    "modules-left": ["custom/feed", "clock"],
-    "modules-center": [],
-    "modules-right": ["custom/keyboard-layout", "custom/locks", "pulseaudio", "custom/vpn", "custom/heartbeat", "network", "custom/power-profile", "battery"],
-    
-    "custom/feed": {
-        "exec": "$SCRIPTS/bar/feed.sh",
-        "interval": 2,
-        "format": "{}",
-        "return-type": "json"
-    },
-    
+
+    "include": [
+      "~/.config/waybar/modules.jsonc"
+    ],
+      
+    "modules-left": [],
+    "modules-center": ["clock"],
+    "modules-right": [
+       "pulseaudio", 
+		   "network", 
+		   "bluetooth",
+       "battery"
+    ],
+
     "clock": {
         "format": "{:%A, %d %B <b>%H:%M</b>}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 7
     },
+    
     
     "custom/keyboard-layout": {
         "exec": "$SCRIPTS/bar/layout.bash",
