@@ -19,8 +19,9 @@
     "modules-right": [
        "pulseaudio", 
 		   "network", 
-       "custom/heartbeat",
 		   "bluetooth",
+       "custom/vpn",
+       "custom/heartbeat",
        "battery"
     ],
 

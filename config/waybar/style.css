@@ -77,6 +77,9 @@ tooltip {
 #network,
 #bluetooth,
 #window,
+#cpu,
+#memory,
+#language,
 #custom-rofi,
 #custom-power_btn,
 #custom-lock_screen,
@@ -86,6 +89,7 @@ tooltip {
 #custom-media,
 #custom-currencies,
 #custom-kbsync,
+#custom-vpn,
 #power-profiles-daemon,
 #temperature,
 #battery,
@@ -123,8 +127,13 @@ tooltip {
 /* LEFT MODULES */
 
 #clock {
-  border-radius: 18px;
+  border-radius: 0px 18px 18px 0px;
   color: #fab387;
+}
+
+#language {
+  border-radius: 18px 0px 0px 18px;
+  color: #cba6f7;
   margin-left: 5px;
 }
 
@@ -228,11 +237,14 @@ window#waybar.empty #window {
 }
 
 #cpu {
-  border-radius: 18px 0px 0px 18px;
+  border-radius: 18px;
+  color: #89dceb;
 }
 
 #memory {
+  border-radius: 18px;
   margin-right: 5px;
+  color: #f5c2e7;
 }
 
 #temperature.critical {
@@ -323,4 +335,21 @@ window#waybar.empty #window {
 
 #custom-kbsync.kb-error {
   color: #eba0ac;
+}
+
+#custom-kbsync.kb-behind {
+  color: #89b4fa;
+}
+
+/* Custom VPN */
+#custom-vpn {
+  border-radius: 18px;
+}
+
+#custom-vpn.vpn-connected {
+  color: #d14d02;
+}
+
+#custom-vpn.vpn-disconnected {
+  color: #555;
 }
