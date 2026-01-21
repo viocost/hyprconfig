@@ -67,6 +67,9 @@ function prompt_install() {
 pacman=(
   # Hyprland and Wayland essentials
   hyprland
+  hyprlock
+  hypridle
+  hyprpaper
   waybar
   rofi-wayland
 
@@ -79,9 +82,6 @@ pacman=(
 
   # Notification daemon
   mako
-
-  # Wallpaper
-  hyprpaper
 
   # Apps
   neovim
