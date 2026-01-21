@@ -74,8 +74,6 @@ tooltip {
 }
 
 #clock,
-#cpu,
-#memory,
 #network,
 #bluetooth,
 #window,
@@ -86,6 +84,8 @@ tooltip {
 #custom-updates,
 #custom-github,
 #custom-media,
+#custom-currencies,
+#custom-kbsync,
 #power-profiles-daemon,
 #temperature,
 #battery,
@@ -303,4 +303,24 @@ window#waybar.empty #window {
 #custom-updates {
   border-radius: 0px 0px 0px 0px;
   padding: 0px 0px 0px 7px;
+}
+
+/* Custom Currencies and KB Sync */
+#custom-currencies {
+  border-radius: 18px 0px 0px 18px;
+  margin-left: 5px;
+  color: #f9e2af;
+}
+
+#custom-kbsync {
+  border-radius: 0px 18px 18px 0px;
+  color: #a6e3a1;
+}
+
+#custom-kbsync.kb-dirty {
+  color: #e8db92;
+}
+
+#custom-kbsync.kb-error {
+  color: #eba0ac;
 }

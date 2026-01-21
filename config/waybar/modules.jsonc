@@ -13,15 +13,32 @@
       "class<org.telegram.desktop>": " $1",
       "class<spotify>": " Spotify",
       "class<unityhub>": " UnityHub",
-      "class<zenity>": "  Lenovo Vantage",
+      "class<zenity>": "  Lenovo Vantage"
     },
     "icon": false,
-    "separate-output": true,
+    "separate-output": true
+  },
+
+  "custom/currencies": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/currencies.py",
+    "interval": 3600,
+    "tooltip": true
+  },
+
+  "custom/kbsync": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/kbsync.sh",
+    "interval": 30,
+    "on-click": "~/.config/waybar/scripts/commit_kb.sh",
+    "tooltip": true
   },
 
   "tray": {
     "icon-size": 16,
-    "spacing": 10,
+    "spacing": 10
   },
 
   "clock": {

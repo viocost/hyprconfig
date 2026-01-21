@@ -8,7 +8,10 @@
       "~/.config/waybar/modules.jsonc"
     ],
       
-    "modules-left": [],
+    "modules-left": [
+       "custom/currencies",
+       "custom/kbsync"
+    ],
     "modules-center": [
        "hyprland/language",
        "clock"
