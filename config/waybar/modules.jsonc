@@ -55,6 +55,11 @@
     "tooltip": true,
   },
 
+  "hyprland/language": {
+    "format": " {}",
+    "keyboard-name": "at-translated-set-2-keyboard",
+  },
+
   "cpu": {
     "interval": 1,
     "format": "<span color='#ef9f76'>CPU:</span> {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}",
@@ -171,10 +176,15 @@
     },
   },
 
+  "custom/heartbeat": {
+    "exec": "~/.config/waybar/scripts/heartbeat.sh",
+    "interval": 2,
+    "return-type": "json",
+  },
+
   "custom/power_btn": {
     "format": "{icon}",
     "format-icons": [""],
-    //"on-click": "sh -c'(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
     "on-click": "wlogout --protocol layer-shell",
     "tooltip-format": "Opzioni di Spegnimento",
     "tooltip": true,

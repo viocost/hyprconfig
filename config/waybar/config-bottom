@@ -30,7 +30,6 @@
       "memory",
       "cpu",
       "temperature",
-      "ram",
 		]
 	},
 

@@ -9,45 +9,19 @@
     ],
       
     "modules-left": [],
-    "modules-center": ["clock"],
+    "modules-center": [
+       "hyprland/language",
+       "clock"
+    ],
     "modules-right": [
        "pulseaudio", 
 		   "network", 
+       "custom/heartbeat",
 		   "bluetooth",
        "battery"
     ],
 
-    
-    
-    "custom/keyboard-layout": {
-        "exec": "$SCRIPTS/bar/layout.bash",
-        "interval": 1,
-        "format": "{}",
-        "return-type": "json"
-    },
-    
-    "custom/locks": {
-        "exec": "$SCRIPTS/bar/locks.bash",
-        "interval": 1,
-        "format": "{}",
-        "return-type": "json"
-    },
-    
-    
-    "custom/vpn": {
-        "exec": "$SCRIPTS/bar/vpn-status.sh",
-        "interval": 2,
-        "format": "{}",
-        "return-type": "json"
-    },
-    
-    "custom/heartbeat": {
-        "exec": "$SCRIPTS/bar/heartbeat.sh",
-        "interval": 1,
-        "format": "{}",
-        "return-type": "json"
-    },
-    
+
     
     
 }

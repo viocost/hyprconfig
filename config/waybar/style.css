@@ -93,6 +93,7 @@ tooltip {
 #custom-wl-gammarelay-temperature,
 #pulseaudio,
 #tray,
+#custom-heartbeat,
 #custom-swaync {
   background-color: #2f354a;
   margin: 0 0 0 0;
@@ -101,6 +102,22 @@ tooltip {
   margin-top: 10px;
   margin-bottom: 10px;
   border: none;
+}
+
+#custom-heartbeat {
+  border-radius: 0 18px 18px 0;
+}
+#custom-heartbeat.green {
+  color: #32a852;
+}
+#custom-heartbeat.yellow {
+  color: #ffd700;
+}
+#custom-heartbeat.red {
+  color: #9e0000;
+}
+#custom-heartbeat.timeout {
+  color: #b30404;
 }
 
 /* LEFT MODULES */
@@ -112,7 +129,7 @@ tooltip {
 }
 
 #network {
-  border-radius: 0px 0 0 0px;
+  border-radius: 18px 0 0 18px;
   color: #f9e2af;
 }
 
@@ -121,7 +138,6 @@ tooltip {
 }
 
 #bluetooth {
-  border-radius: 0 18px 18px 0px;
   color: #89b4fa;
 }
 
@@ -224,8 +240,8 @@ window#waybar.empty #window {
 }
 
 #battery {
-  border-radius: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 7px;
+  border-radius: 18px;
+  margin-right: 3px;
   color: #a6e3a1;
 }
 
@@ -266,7 +282,6 @@ window#waybar.empty #window {
 }
 
 #pulseaudio {
-  border-radius: 18px 0 0 18px;
   color: #89b4fa;
 }
 
