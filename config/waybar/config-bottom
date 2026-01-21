@@ -32,6 +32,7 @@
 		"custom/swaync"
 	],
 
+
 	// Group Hardware
 	"group/hardware": {
 		"orientation": "horizontal",
