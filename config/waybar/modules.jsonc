@@ -26,12 +26,12 @@
 
   "clock": {
     "interval": 1,
-    "format": "{:%H:%M:%S}",
-    "locale": "it_IT.UTF-8",
+    "format": "{:L%a %b-%d %H:%M:%S}",
+    "locale": "en_US.UTF-8",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:L%a %d/%m/%y (%H:%M:%S)}",
+    "format-alt": "{:L%a %b-%d %H:%M:%S}",
     "calendar": {
-      "mode": "month",
+      "mode": "year",
       "mode-mon-col": 3,
       "weeks-pos": "right",
       "on-scroll": 1,
