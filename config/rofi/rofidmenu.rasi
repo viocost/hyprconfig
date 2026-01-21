@@ -7,7 +7,6 @@ configuration {
     show-icons:          true;
     icon-theme:          "Qogir";
     display-drun:        "Apps";
-    dpi:                 220;
     drun-display-format: "{name}";
     scroll-method:       0;
     disable-history:     false;
