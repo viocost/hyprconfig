@@ -5,118 +5,115 @@
     "source": "~/.config/fastfetch/eldritch.png",
     "padding": {
       "right": 7,
-      "top": 6
-    }
+      "top": 6,
+    },
   },
-  "general": {
-    "multithreading": true
-  },
+  "general": {},
   "display": {
-    "separator": "➜   "
+    "separator": "➜   ",
   },
   "modules": [
     "break",
     {
       "type": "title",
-      "format": "                                {6}{7}{8}"
+      "format": "                                {6}{7}{8}",
     },
     "break",
     {
       "type": "custom",
-      "format": "┌──────────────────────────────────────────────────────────────────────────────┐" // `\u001b` is `\033`, or `\e`
+      "format": "┌──────────────────────────────────────────────────────────────────────────────┐", // `\u001b` is `\033`, or `\e`
     },
     "break",
     {
       "key": "     OS           ",
       "keyColor": "green",
-      "type": "os"
+      "type": "os",
     },
     {
       "key": "    󰌢 Machine      ",
       "keyColor": "cyan",
-      "type": "host"
+      "type": "host",
     },
     {
       "key": "     Kernel       ",
       "keyColor": "blue",
-      "type": "kernel"
+      "type": "kernel",
     },
     {
       "key": "    󰅐 Uptime       ",
       "keyColor": "green",
-      "type": "uptime"
+      "type": "uptime",
     },
     {
       "key": "     Packages     ",
       "keyColor": "cyan",
-      "type": "packages"
+      "type": "packages",
     },
     {
       "key": "     WM           ",
       "keyColor": "blue",
-      "type": "wm"
+      "type": "wm",
     },
     {
       "key": "     Shell        ",
       "keyColor": "green",
-      "type": "shell"
+      "type": "shell",
     },
     {
       "key": "     Terminal     ",
       "keyColor": "cyan",
-      "type": "terminal"
+      "type": "terminal",
     },
     {
       "key": "     Font         ",
       "keyColor": "blue",
-      "type": "terminalfont"
+      "type": "terminalfont",
     },
     {
       "key": "    󰻠 CPU          ",
       "keyColor": "green",
-      "type": "cpu"
+      "type": "cpu",
     },
     {
       "key": "    󰍛 GPU          ",
       "keyColor": "cyan",
-      "type": "gpu"
+      "type": "gpu",
     },
     {
       "key": "    󰑭 Memory       ",
       "keyColor": "blue",
-      "type": "memory"
+      "type": "memory",
     },
     {
       "key": "    🔄SWAP         ",
       "keyColor": "green",
-      "type": "swap"
+      "type": "swap",
     },
     {
       "key": "    🖴 Storage      ",
       "keyColor": "cyan",
-      "type": "disk"
+      "type": "disk",
     },
     {
       "key": "     Wifi         ",
       "keyColor": "blue",
-      "type": "wifi"
+      "type": "wifi",
     },
     {
       "key": "    󰩟 Local IP     ",
       "keyColor": "green",
       "type": "localip",
-      "compact": true
+      "compact": true,
     },
     {
       "key": "    🌐Public IP    ",
       "keyColor": "cyan",
       "type": "publicip",
-      "compact": true
     },
     "break",
     {
       "type": "custom",
-      "format": "└──────────────────────────────────────────────────────────────────────────────┘" // `\u001b` is `\033`, or `\e`
+      "format": "└──────────────────────────────────────────────────────────────────────────────┘", // `\u001b` is `\033`, or `\e`
     },
     "break",
     {
@@ -124,8 +121,8 @@
       "paddingLeft": 34,
       "symbol": "circle",
       "block": {
-        "width": 10
-      }
-    }
-  ]
+        "width": 10,
+      },
+    },
+  ],
 }
