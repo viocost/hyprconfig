@@ -109,7 +109,7 @@ tooltip {
 }
 
 #custom-heartbeat {
-  border-radius: 0 18px 18px 0;
+  border-radius: 18px;
 }
 #custom-heartbeat.green {
   color: #32a852;
@@ -127,18 +127,18 @@ tooltip {
 /* LEFT MODULES */
 
 #clock {
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 18px;
   color: #fab387;
 }
 
 #language {
-  border-radius: 18px 0px 0px 18px;
+  border-radius: 18px;
   color: #cba6f7;
   margin-left: 5px;
 }
 
 #network {
-  border-radius: 18px 0 0 18px;
+  border-radius: 18px;
   color: #f9e2af;
 }
 
@@ -237,7 +237,7 @@ window#waybar.empty #window {
 }
 
 #cpu {
-  border-radius: 18px;
+  border-radius: 18px 0 0 18px;
   color: #89dceb;
 }
 
