@@ -80,6 +80,8 @@ tooltip {
 }
 
 #clock,
+#cpu,
+#memory,
 #network,
 #bluetooth,
 #window,
@@ -110,7 +112,7 @@ tooltip {
 /* LEFT MODULES */
 
 #clock {
-  border-radius: 18px 0 0 18px;
+  border-radius: 18px;
   color: #fab387;
   margin-left: 5px;
 }
@@ -211,7 +213,16 @@ window#waybar.empty #window {
 
 #temperature {
   color: #8be9fd;
+  border-radius: 0px 18px 18px 0px;
+  margin-right: 5px;
+}
+
+#cpu {
   border-radius: 18px 0px 0px 18px;
+}
+
+#memory {
+  margin-right: 5px;
 }
 
 #temperature.critical {

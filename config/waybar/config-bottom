@@ -17,6 +17,7 @@
 		"hyprland/window",
 	],
     "modules-right": [
+
 		"group/hardware",
 		"tray",
 	],
@@ -26,11 +27,10 @@
 	"group/hardware": {
 		"orientation": "horizontal",
 		"modules":[
-			"temperature",
-			"battery",
-			"power-profiles-daemon",
-			"custom/wl-gammarelay-temperature",
-			"backlight"
+      "memory",
+      "cpu",
+      "temperature",
+      "ram",
 		]
 	},
 

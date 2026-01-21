@@ -55,13 +55,28 @@
     "tooltip": true,
   },
 
+  "cpu": {
+    "interval": 1,
+    "format": "<span color='#ef9f76'>CPU:</span> {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+    "format-icons": [
+      "<span color='#69ff94'>▁</span>",
+      "<span color='#2aa9ff'>▂</span>",
+      "<span color='#f8f8f2'>▃</span>",
+      "<span color='#f8f8f2'>▄</span>",
+      "<span color='#ffffa5'>▅</span>",
+      "<span color='#ffffa5'>▆</span>",
+      "<span color='#ff9977'>▇</span>",
+      "<span color='#dd532e'>█</span>",
+    ],
+  },
+
   "battery": {
     "states": {
       "good": 75,
       "warning": 35,
       "critical": 20,
     },
-    "format": "{icon} {capacity}%",
+    "format": "{time} {icon} {capacity}%",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
@@ -98,16 +113,25 @@
   },
 
   "temperature": {
-    "thermal-zone": 7,
-    "interval": 5,
+    "thermal-zone": 6,
+    "interval": 3,
     "format": "{icon}{temperatureC}°C",
-    "format-icons": [" "],
+    "format-icons": [""],
     "format-alt-click": "click-right",
     "critical-threshold": 80,
     "format-critical": " {temperatureC}°C",
-    "on-click": "kitty --title btop sh -c 'btop'",
+    "on-click": "kitty --title bpytop sh -c 'bpytop'",
     "tooltip-format": "Temperatura CPU",
     "tooltip": true,
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "<span color='#7287fd'>RAM:</span> <span color='#99d1db'>{used:0.1f}G</span>/{total:0.1f}G",
+    "states": {
+      "warning": 80,
+      "critical": 90,
+    },
   },
 
   "network": {
