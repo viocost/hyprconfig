@@ -17,11 +17,6 @@
        "battery"
     ],
 
-    "clock": {
-        "format": "{:%A, %d %B <b>%H:%M</b>}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "interval": 7
-    },
     
     
     "custom/keyboard-layout": {
@@ -38,22 +33,6 @@
         "return-type": "json"
     },
     
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-muted": " Muted",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "scroll-step": 5,
-        "on-click": "pavucontrol"
-    },
     
     "custom/vpn": {
         "exec": "$SCRIPTS/bar/vpn-status.sh",
@@ -69,31 +48,6 @@
         "return-type": "json"
     },
     
-    "network": {
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": " {ipaddr}",
-        "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
-        "on-click": "nm-connection-editor"
-    },
     
-    "custom/power-profile": {
-        "exec": "$SCRIPTS/bar/ppd-status",
-        "interval": 5,
-        "format": "{}",
-        "on-click": "$SCRIPTS/bar/power-profiles"
-    },
     
-    "battery": {
-        "bat": "BAT0",
-        "interval": 30,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-icons": ["", "", "", "", ""]
-    }
 }

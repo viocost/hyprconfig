@@ -14,22 +14,11 @@
 		"hyprland/workspaces"
 	],
     "modules-center": [
-		"clock",
-		"network", 
-		"bluetooth",
 		"hyprland/window",
-		"custom/rofi",
-		"group/exit",
-		"custom/wol",
-		"custom/updates",
-		"custom/github"
 	],
     "modules-right": [
-		"custom/media",
 		"group/hardware",
-		"group/audio",
 		"tray",
-		"custom/swaync"
 	],
 
 

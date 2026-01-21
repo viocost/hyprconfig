@@ -1,7 +1,7 @@
 version = "1.2.0"
 
 [format]
-client_active = "<span color='red'>{icon}</span>"
+client_active = "<span color='#e64553'>{icon}</span>"
 # Deduplicate icons if enable.
 # A superscripted counter will be added.
 # dedup = true
