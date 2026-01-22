@@ -169,6 +169,9 @@ echo "=== Optional Hardware-Specific Packages ==="
 # NVIDIA drivers (conditional)
 prompt_install "Are you using NVIDIA graphics?" pacman nvidia nvidia-utils nvidia-settings
 
+# Fingerprint authentication (conditional)
+prompt_install "Enable fingerprint authentication for screen unlock?" pacman fprintd imagemagick
+
 # Shell enhancements (optional)
 prompt_install "Install zoxide (smart cd) and starship (prompt)?" pacman zoxide starship
 

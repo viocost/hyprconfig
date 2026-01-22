@@ -23,6 +23,13 @@ echo "🔑 Setting up Git and SSH keys..."
 sleep 1
 ./run.sh ./install/git.sh
 
+# Setup fingerprint authentication (if user chose to install it)
+if pacman -Qi fprintd &>/dev/null; then
+  echo "🔐 Setting up fingerprint authentication..."
+  sleep 1
+  ./run.sh ./install/fingerprint.sh
+fi
+
 # TODO: Add more installation steps as we build them
 # - Fonts
 # - Symlinks
