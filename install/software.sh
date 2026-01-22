@@ -86,12 +86,11 @@ pacman=(
 
   # Apps
   neovim
-  chromium
   openvpn
   docker
   docker-compose
   remmina
-  emacs
+  emacs-wayland
   kitty
   tmux
   bitwarden
@@ -151,6 +150,7 @@ yay=(
   # Steganography
   steghide
   wlogout
+  google-chrome
   pcloud-drive
   devour
   slack-desktop

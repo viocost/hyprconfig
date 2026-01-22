@@ -23,7 +23,7 @@ window#waybar.hidden {
 
 tooltip {
   background: rgba(8, 7, 10, 0.8);
-  border-radius: 18px;
+  border-radius: 6px;
   border-width: 2px;
   border-style: solid;
   border-color: #11111b;
@@ -103,14 +103,14 @@ tooltip {
   background-color: #2f354a;
   margin: 0 0 0 0;
   padding: 0px 7px 0px 7px;
-  border-radius: 18px;
+  border-radius: 6px;
   margin-top: 10px;
   margin-bottom: 10px;
   border: none;
 }
 
 #custom-heartbeat {
-  border-radius: 18px;
+  border-radius: 6px;
 }
 #custom-heartbeat.green {
   color: #32a852;
@@ -128,18 +128,18 @@ tooltip {
 /* LEFT MODULES */
 
 #clock {
-  border-radius: 18px;
+  border-radius: 6px;
   color: #fab387;
 }
 
 #language {
-  border-radius: 18px;
+  border-radius: 6px;
   color: #cba6f7;
   margin-left: 5px;
 }
 
 #custom-keyboard-layout {
-  border-radius: 18px;
+  border-radius: 6px;
   color: #cba6f7;
   margin-left: 5px;
   font-size: 16px;
@@ -159,7 +159,7 @@ tooltip {
 }
 
 #network {
-  border-radius: 18px;
+  border-radius: 6px;
   color: #f9e2af;
 }
 
@@ -174,7 +174,7 @@ tooltip {
 #window {
   background: #cdd6f4;
   color: #1e1e2e;
-  border-radius: 18px;
+  border-radius: 6px;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -191,7 +191,7 @@ window#waybar.empty #window {
 
 #custom-power_btn {
   color: #9c8bfd;
-  border-radius: 18px 0px 0px 18px;
+  border-radius: 6px 0px 0px 6px;
 }
 
 #custom-lock_screen {
@@ -224,7 +224,7 @@ window#waybar.empty #window {
 }
 
 #custom-github {
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 6px 6px 0px;
 }
 
 #custom-github.green {
@@ -253,17 +253,17 @@ window#waybar.empty #window {
 
 #temperature {
   color: #8be9fd;
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 6px 6px 0px;
   margin-right: 5px;
 }
 
 #cpu {
-  border-radius: 18px 0 0 18px;
+  border-radius: 6px 0 0 6px;
   color: #89dceb;
 }
 
 #memory {
-  border-radius: 18px;
+  border-radius: 6px;
   margin-right: 5px;
   color: #f5c2e7;
 }
@@ -273,7 +273,7 @@ window#waybar.empty #window {
 }
 
 #battery {
-  border-radius: 18px;
+  border-radius: 6px;
   margin-right: 3px;
   color: #a6e3a1;
 }
@@ -310,7 +310,7 @@ window#waybar.empty #window {
 }
 
 #backlight {
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 6px 6px 0px;
   margin-right: 5px;
 }
 
@@ -319,17 +319,17 @@ window#waybar.empty #window {
 }
 
 #pulseaudio.microphone {
-  border-radius: 0 18px 18px 0;
+  border-radius: 0 6px 6px 0;
   color: #cba6f7;
   margin-right: 5px;
 }
 
 #tray {
-  border-radius: 18px 0 0 18px;
+  border-radius: 6px 0 0 6px;
 }
 
 #custom-swaync {
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 6px 6px 0px;
   margin-right: 5px;
 }
 
@@ -340,13 +340,13 @@ window#waybar.empty #window {
 
 /* Custom Currencies and KB Sync */
 #custom-currencies {
-  border-radius: 18px 0px 0px 18px;
+  border-radius: 6px 0px 0px 6px;
   margin-left: 5px;
   color: #f9e2af;
 }
 
 #custom-kbsync {
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 6px 6px 0px;
   color: #a6e3a1;
 }
 
@@ -364,7 +364,7 @@ window#waybar.empty #window {
 
 /* Custom VPN */
 #custom-vpn {
-  border-radius: 18px;
+  border-radius: 6px;
 }
 
 #custom-vpn.vpn-connected {

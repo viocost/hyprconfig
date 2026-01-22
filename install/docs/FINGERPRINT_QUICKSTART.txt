@@ -1,0 +1,102 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║        FINGERPRINT AUTHENTICATION - QUICK START             ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+🚀 INSTALLATION (New System)
+────────────────────────────────────────────────────────────────
+cd ~/hyprconfig
+./install.sh
+
+→ When prompted: "Enable fingerprint authentication for screen 
+  unlock?" answer YES
+
+→ Follow enrollment prompts to scan your fingers
+
+→ Done! Test with: Super + L
+
+
+🔧 QUICK SETUP (Existing System)
+────────────────────────────────────────────────────────────────
+~/hyprconfig/setup-fingerprint.sh
+
+→ Will install fprintd if needed
+→ Runs full configuration
+→ Enrolls your fingerprints
+
+
+📝 COMMON COMMANDS
+────────────────────────────────────────────────────────────────
+# Shortcut alias (add to your .bashrc or .zshrc):
+alias fpm='~/hyprconfig/install/fingerprint-manager.sh'
+
+# Then use:
+fpm enroll right-index-finger    # Enroll new finger
+fpm list                          # Show enrolled fingers
+fpm test                          # Test authentication
+fpm status                        # Show system status
+fpm help                          # Full command list
+
+
+🔐 USAGE
+────────────────────────────────────────────────────────────────
+Lock Screen:    Super + L
+Alternative:    Ctrl + Alt + X, then press 'k'
+
+Unlock:         Scan enrolled finger OR type password
+
+
+💡 PRO TIPS
+────────────────────────────────────────────────────────────────
+✓ Enroll 2-3 different fingers for redundancy
+✓ Keep fingerprint sensor clean for best results
+✓ Password ALWAYS works as fallback (no lockout risk)
+✓ Test after enrollment: fpm test
+
+
+🛠️ TROUBLESHOOTING
+────────────────────────────────────────────────────────────────
+Sensor not working?
+  → lsusb | grep -i finger
+  → sudo systemctl restart fprintd
+
+Authentication fails?
+  → fpm test
+  → If fails, re-enroll: fpm delete-all && fpm enroll right-index-finger
+
+Need help?
+  → fpm help
+  → cat ~/hyprconfig/install/docs/FINGERPRINT_SETUP_REPORT.md
+
+
+📚 DOCUMENTATION
+────────────────────────────────────────────────────────────────
+Quick Start:       install/docs/FINGERPRINT_QUICKSTART.txt (this file)
+Complete Guide:    install/docs/FINGERPRINT_SETUP_REPORT.md
+Changes Summary:   install/docs/FINGERPRINT_CHANGES.txt
+File Structure:    install/docs/FILE_STRUCTURE.txt
+
+
+🎯 SUPPORTED FINGERS
+────────────────────────────────────────────────────────────────
+Left hand:  left-thumb, left-index-finger, left-middle-finger,
+            left-ring-finger, left-little-finger
+
+Right hand: right-thumb, right-index-finger, right-middle-finger,
+            right-ring-finger, right-little-finger
+
+
+✅ INSTALLATION CHECKLIST
+────────────────────────────────────────────────────────────────
+[ ] fprintd installed:     pacman -Q fprintd
+[ ] Service running:       systemctl status fprintd
+[ ] Fingerprints enrolled: fpm list
+[ ] Lock screen tested:    Super + L
+[ ] Fingerprint works:     Scan finger to unlock
+[ ] Password works:        Type password to unlock
+
+
+═══════════════════════════════════════════════════════════════
+                     THAT'S IT! ENJOY! 
+═══════════════════════════════════════════════════════════════
