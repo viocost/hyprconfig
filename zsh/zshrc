@@ -264,6 +264,9 @@ else
   fastfetch 
 fi
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Option 2: Starship prompt (comment out agnoster above to use this)
 # if command -v starship &> /dev/null; then
 #   # https://github.com/starship/starship/issues/560#issuecomment-2339030231

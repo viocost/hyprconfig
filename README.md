@@ -10,6 +10,50 @@ cd ~/hyprconfig
 ./install.sh
 ```
 
+## Post-Installation Steps
+
+### 1. Tmux Plugin Installation
+
+After running the installer, you need to install tmux plugins:
+
+```bash
+# Start tmux
+tmux
+
+# Install plugins by pressing:
+# Ctrl+A then Shift+I
+# (Hold Ctrl, press A, release both, then hold Shift and press I)
+
+# Wait for plugins to install, then you're done!
+```
+
+Or install from command line:
+```bash
+~/.config/tmux/plugins/tpm/bin/install_plugins
+```
+
+### 2. Fingerprint Setup (if enabled)
+
+If you enabled fingerprint authentication during install:
+
+```bash
+# Enroll your fingerprint
+~/hyprconfig/install/fingerprint-manager.sh enroll right-index-finger
+
+# List enrolled fingerprints
+~/hyprconfig/install/fingerprint-manager.sh list
+
+# Test authentication
+~/hyprconfig/install/fingerprint-manager.sh test
+```
+
+### 3. Reboot
+
+Reboot to apply all system changes:
+```bash
+sudo reboot
+```
+
 ## Directory Structure
 
 ```

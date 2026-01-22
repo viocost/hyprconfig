@@ -10,6 +10,7 @@ install/
 ├── git.sh .......................... Git and SSH configuration
 ├── fonts.sh ........................ Font installation
 ├── symlinks.sh ..................... Configuration symlink manager
+├── tmux.sh ......................... Tmux and TPM setup
 ├── fingerprint.sh .................. Fingerprint authentication setup
 ├── fingerprint-manager.sh .......... Fingerprint management CLI tool
 └── docs/ ........................... Documentation
@@ -36,6 +37,15 @@ Installs required fonts for the system.
 
 ### symlinks.sh
 Creates symbolic links from hyprconfig/config to ~/.config
+
+### tmux.sh
+Sets up Tmux and TPM (Tmux Plugin Manager):
+- Clones TPM repository
+- Configures plugin directory
+- Displays instructions for plugin installation
+
+**Post-installation:**
+After running this script, start tmux and press `Ctrl+A` then `Shift+I` to install plugins.
 
 ### fingerprint.sh
 Sets up fingerprint authentication:

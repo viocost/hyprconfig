@@ -30,6 +30,11 @@ if pacman -Qi fprintd &>/dev/null; then
   ./run.sh ./install/fingerprint.sh
 fi
 
+# Setup tmux and TPM
+echo "🖥️  Setting up Tmux and Plugin Manager..."
+sleep 1
+./run.sh ./install/tmux.sh
+
 # TODO: Add more installation steps as we build them
 # - Fonts
 # - Symlinks
@@ -39,6 +44,23 @@ fi
 echo ""
 echo "=========================================="
 echo "  Installation Complete!"
+echo "=========================================="
+echo ""
+echo "📋 Post-Installation Steps:"
+echo ""
+echo "1. 🎨 Tmux Plugins:"
+echo "   Start tmux and install plugins:"
+echo "     tmux"
+echo "     # Then press: Ctrl+A then Shift+I"
+echo ""
+echo "2. 🔐 Fingerprint (if installed):"
+if pacman -Qi fprintd &>/dev/null; then
+  echo "   Enroll your fingerprints:"
+  echo "     ~/hyprconfig/install/fingerprint-manager.sh enroll right-index-finger"
+fi
+echo ""
+echo "3. 🔄 Reboot to apply all changes"
+echo ""
 echo "=========================================="
 echo ""
 read -p "Installation completed. Reboot now? (y/N) " answer
