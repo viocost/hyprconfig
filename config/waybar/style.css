@@ -80,6 +80,7 @@ tooltip {
 #cpu,
 #memory,
 #language,
+#custom-keyboard-layout,
 #custom-rofi,
 #custom-power_btn,
 #custom-lock_screen,
@@ -135,6 +136,26 @@ tooltip {
   border-radius: 18px;
   color: #cba6f7;
   margin-left: 5px;
+}
+
+#custom-keyboard-layout {
+  border-radius: 18px;
+  color: #cba6f7;
+  margin-left: 5px;
+  font-size: 16px;
+  padding: 0px 10px;
+}
+
+#custom-keyboard-layout.us {
+  color: #89b4fa;
+}
+
+#custom-keyboard-layout.ru {
+  color: #f38ba8;
+}
+
+#custom-keyboard-layout.il {
+  color: #94e2d5;
 }
 
 #network {

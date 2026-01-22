@@ -70,7 +70,7 @@ pacman=(
   hyprlock
   hypridle
   hyprpaper
-  swaync
+  socat
   waybar
   rofi-wayland
 

@@ -81,9 +81,12 @@
     "tooltip": true,
   },
 
-  "hyprland/language": {
-    "format": " {}",
-    "keyboard-name": "at-translated-set-2-keyboard",
+  "custom/keyboard-layout": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/layout.sh",
+    "on-click": "~/.config/waybar/scripts/layout-switch.sh",
+    "tooltip": true
   },
 
   "cpu": {

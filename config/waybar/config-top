@@ -13,7 +13,7 @@
        "custom/kbsync"
     ],
     "modules-center": [
-       "hyprland/language",
+       "custom/keyboard-layout",
        "clock"
     ],
     "modules-right": [

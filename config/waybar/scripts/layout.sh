@@ -1,71 +1,46 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Keyboard Layout Module with Flag Icons
+# Subscribes to Hyprland layout changes
 
-# Get keyboard name from config or use default
-KEYBOARD_NAME=${KEYBOARD_NAME:-"at-translated-set-2-keyboard"}
+trap 'exit' INT TERM
+trap 'kill 0' EXIT
 
-# Function to get current layout
-get_layout() {
-    LAYOUT=$(hyprctl devices -j | jq -r ".keyboards[] | select(.name == \"$KEYBOARD_NAME\") | .active_keymap" 2>/dev/null)
-    
-    if [ -z "$LAYOUT" ]; then
-        # Fallback to first keyboard if specified one not found
-        LAYOUT=$(hyprctl devices -j | jq -r '.keyboards[0].active_keymap' 2>/dev/null)
-    fi
-    
-    # Map full names to short codes
-    case "$LAYOUT" in
-        "English (US)") SHORT="US" ;;
-        "Russian") SHORT="RU" ;;
-        "Hebrew") SHORT="IL" ;;
-        *) SHORT=$(echo "$LAYOUT" | cut -c1-2 | tr '[:lower:]' '[:upper:]') ;;
-    esac
-    
-    echo "$SHORT"
+# Map layout names to flags and short codes
+get_layout_display() {
+  local layout="$1"
+
+  case "$layout" in
+  *"English (US)"* | *"English"*)
+    echo '{"text": "🇺🇸 US", "tooltip": "English (US)", "class": "us"}'
+    ;;
+  *"Russian"* | *"ru"*)
+    echo '{"text": "🇷🇺 RU", "tooltip": "Russian", "class": "ru"}'
+    ;;
+  *"Hebrew"* | *"il"* | *"he"*)
+    echo '{"text": "🇮🇱 IL", "tooltip": "Hebrew", "class": "il"}'
+    ;;
+  *)
+    # Default fallback
+    echo "{\"text\": \"⌨ $layout\", \"tooltip\": \"$layout\", \"class\": \"unknown\"}"
+    ;;
+  esac
 }
 
-# Function to output JSON
-output_json() {
-    LAYOUT=$(get_layout)
-    cat <<EOF
-{"text": " $LAYOUT", "tooltip": "Keyboard Layout: $LAYOUT", "class": "layout"}
-EOF
+handle() {
+  case $1 in
+  activelayout*)
+    # Extract layout name from the event
+    layout=$(echo "$1" | sed 's/^activelayout>>//' | awk -F',' '{print $2}')
+    get_layout_display "$layout"
+    ;;
+  esac
 }
 
-# Output initial state
-output_json
+# Get initial layout
+initial_layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.name != "virtual-keyboard-1") | .active_keymap' | head -1)
+get_layout_display "$initial_layout"
 
-# Try to listen to Hyprland events if socket is available
-if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
-    SOCKET_PATH="/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
-    
-    if [ -S "$SOCKET_PATH" ]; then
-        # Use nc (netcat) to listen to Hyprland events
-        nc -U "$SOCKET_PATH" 2>/dev/null | while read -r line; do
-            if echo "$line" | grep -q "activelayout"; then
-                output_json
-            fi
-        done
-    else
-        # Fallback to polling if socket not available
-        LAST_LAYOUT=$(get_layout)
-        while true; do
-            sleep 0.5
-            CURRENT_LAYOUT=$(get_layout)
-            if [ "$CURRENT_LAYOUT" != "$LAST_LAYOUT" ]; then
-                output_json
-                LAST_LAYOUT="$CURRENT_LAYOUT"
-            fi
-        done
-    fi
-else
-    # Fallback to polling if not running in Hyprland
-    LAST_LAYOUT=$(get_layout)
-    while true; do
-        sleep 0.5
-        CURRENT_LAYOUT=$(get_layout)
-        if [ "$CURRENT_LAYOUT" != "$LAST_LAYOUT" ]; then
-            output_json
-            LAST_LAYOUT="$CURRENT_LAYOUT"
-        fi
-    done
-fi
+# Subscribe to layout changes via Hyprland socket
+socat -U - "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do
+  handle "$line"
+done
