@@ -10,3 +10,5 @@ alias arandr="devour arandr"
 alias zoom="devour ~/.local/bin/zoom"
 
 alias tf="terraform"
+
+alias yz="yazi"

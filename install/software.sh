@@ -91,6 +91,8 @@ pacman=(
   docker-compose
   remmina
   emacs-wayland
+  chromium
+  firefox
   kitty
   tmux
   bitwarden
@@ -150,9 +152,9 @@ yay=(
   # Steganography
   steghide
   wlogout
-  google-chrome
   pcloud-drive
   devour
+  pinta
   slack-desktop
   drawio-desktop
 )
