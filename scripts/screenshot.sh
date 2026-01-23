@@ -11,7 +11,7 @@ mkdir -p "$SCREENSHOT_DIR"
 HYPRSHOT="$HOME/hyprconfig/scripts/hyprshot.sh"
 
 # Rofi menu options
-OPTIONS="🔳 Active Window\n✂️ Select Region\n🖥️ Active Monitor\n🪟 Full Desktop"
+OPTIONS="🔳 Active Window\n✂️ Select Region\n🖥️ Active Monitor\n"
 
 # Show rofi menu and get selection
 CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -i -p "Screenshot" -theme-str 'window {width: 300px;}' -theme-str 'listview {lines: 4;}')
@@ -30,15 +30,19 @@ FILEPATH="$SCREENSHOT_DIR/$FILENAME"
 send_notification() {
     local filepath="$1"
     
-    echo $filepath
-    # Wait a moment for file to be fully written
-    sleep 0.2
-    
-    # Verify file exists
-    if [ ! -f "$filepath" ]; then
-        notify-send "Screenshot Error" "File not found: $filepath" --urgency=critical
+    start_time_ms=$(date +%s%3N)
+
+    while [ ! -f "$filepath" ]; do
+      now_time_ms=$(date +%s%3N)
+      elapsed_ms=$((now_time_ms - start_time_ms))
+
+      if [ "$elapsed_ms" -ge 2000 ]; then
+        notify-send "Screenshot Error" "File not found after 2s: $filepath" --urgency=critical
         return 1
-    fi
+      fi
+
+      sleep 0.05
+    done
     
     # Send notification with thumbnail, clipboard info, and action button in background
     # Using image-path hint for swaync to display the screenshot thumbnail
@@ -94,16 +98,6 @@ case "$CHOICE" in
         fi
         ;;
         
-    *"Full Desktop"*)
-        # Take screenshot of all outputs
-        "$HYPRSHOT" -m output -o "$SCREENSHOT_DIR" -f "$FILENAME" -s
-        
-        if [ $? -eq 0 ]; then
-            send_notification "$FILEPATH"
-        else
-            notify-send "Screenshot Failed" "Could not capture full desktop" --urgency=critical
-        fi
-        ;;
         
     *)
         exit 0
