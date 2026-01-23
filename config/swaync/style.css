@@ -269,7 +269,6 @@ scale slider {
   background-color: @close_button_hover_bg;
 }
 .control-center .close-button image {
-  margin-right: 12px; /* Adjust this value for desired spacing */
   color: @icon_secondary;
 }
 
@@ -324,7 +323,6 @@ scale slider {
   background-color: @close_button_hover_bg;
 }
 .floating-notifications .close-button image {
-  margin-right: 12px; /* Adjust this value for desired spacing */
   color: @icon_secondary;
 }
 .floating-notifications .notification-alt-actions {
