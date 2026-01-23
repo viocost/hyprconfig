@@ -19,7 +19,7 @@ fi
 
 # Pull latest changes first
 echo "Pulling latest changes..." > "$LOG_FILE"
-if ! git pull --rebase origin HEAD >> "$LOG_FILE" 2>&1; then
+if ! git pull origin HEAD >> "$LOG_FILE" 2>&1; then
     # Check if it's a conflict
     if git status | grep -q "rebase in progress\|Unmerged paths"; then
         log_error "Merge conflict detected! Manual resolution required."
