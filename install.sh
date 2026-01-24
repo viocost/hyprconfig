@@ -41,6 +41,15 @@ sleep 1
 # - Cron jobs
 # - Services
 
+
+echo "🖥️  Setting up fonts..."
+sleep 1
+./run.sh ./install/fonts.sh
+
+echo "🔗 Linking the config"
+sleep 1
+./run.sh ./install/symlinks.sh
+
 echo ""
 echo "=========================================="
 echo "  Installation Complete!"

@@ -3,6 +3,8 @@
 # Symlinks script for hyprconfig
 # Links configuration files from repo to their proper locations
 
+cd ..
+
 function makedir() {
   if [[ ! -d $1 ]]; then
     mkdir -p $1
