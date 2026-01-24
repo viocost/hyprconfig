@@ -1,0 +1,8 @@
+- greeter (need to configure during the installation)
+- workspace renaming
+- cron jobs
+- logout menu style
+- chrome (not fixable as of now)
+- emacs script (optional)
+- rofi theme
+- screenshots 

@@ -53,6 +53,14 @@ echo "Linking fastfetch configuration..."
 rmquiet ~/.config/fastfetch
 ln -s $(pwd)/config/fastfetch $(readlink -f ~/.config)
 
+echo "Linking wlogout configuration..."
+rmquiet ~/.config/wlogougt
+ln -s $(pwd)/config/wlogout$(readlink -f ~/.config)
+
+echo "Linking swaync configuration..."
+rmquiet ~/.config/swaync
+ln -s $(pwd)/config/swaync$(readlink -f ~/.config)
+
 echo "Copying nvim configuration..."
 rmquiet ~/.config/nvim
 cp -r $(pwd)/config/nvim $(readlink -f ~/.config)/nvim
