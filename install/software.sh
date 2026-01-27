@@ -100,15 +100,15 @@ pacman=(
   swaync
 
   # Themes and appearance
-  xcursor-breeze        # Cursor theme
-  gtk3                  # GTK3 toolkit
-  gtk4                  # GTK4 toolkit
-  arc-gtk-theme         # Arc GTK theme
-  papirus-icon-theme    # Icon theme
+  xcursor-breeze     # Cursor theme
+  gtk3               # GTK3 toolkit
+  gtk4               # GTK4 toolkit
+  arc-gtk-theme      # Arc GTK theme
+  papirus-icon-theme # Icon theme
 
   # Bluetooth
-  bluez                 # Bluetooth protocol stack
-  bluez-utils           # Bluetooth utilities
+  bluez       # Bluetooth protocol stack
+  bluez-utils # Bluetooth utilities
 
   # Apps
   neovim
@@ -132,7 +132,7 @@ pacman=(
   # Screenshot tool for Wayland
   grim
   slurp
-  swappy        # Screenshot editor (Wayland native)
+  swappy # Screenshot editor (Wayland native)
 
   # Utils
   cronie
@@ -166,11 +166,12 @@ pacman=(
   htop
   fzf
   reflector
-  unzip            # ZIP archive support
-  unrar            # RAR archive support
-  p7zip            # 7z archive support
-  ntfs-3g          # NTFS filesystem support
-  exfatprogs       # exFAT filesystem support
+  unzip      # ZIP archive support
+  unrar      # RAR archive support
+  p7zip      # 7z archive support
+  ntfs-3g    # NTFS filesystem support
+  exfatprogs # exFAT filesystem support
+  jq
 
   # Font manager
   gucharmap
@@ -198,13 +199,13 @@ done
 # ============================================
 # Install YAY AUR Helper if not present
 # ============================================
-if ! command -v yay &> /dev/null; then
+if ! command -v yay &>/dev/null; then
   echo ""
   echo "📦 Installing YAY AUR helper..."
-  
+
   # Ensure base-devel and git are installed
   sudo pacman -S --needed --noconfirm git base-devel
-  
+
   # Clone and install yay
   TEMP_YAY_DIR="/tmp/yay-install-$$"
   git clone https://aur.archlinux.org/yay.git "$TEMP_YAY_DIR"
@@ -212,8 +213,8 @@ if ! command -v yay &> /dev/null; then
   makepkg -si --noconfirm
   cd -
   rm -rf "$TEMP_YAY_DIR"
-  
-  if command -v yay &> /dev/null; then
+
+  if command -v yay &>/dev/null; then
     echo "✓ YAY installed successfully"
   else
     echo "❌ Failed to install YAY. Some AUR packages may not install."
@@ -242,7 +243,7 @@ yay=(
   wdisplays
   hyprshot
   hyprland-autoname-workspaces-git
-  neovide      # Neovim GUI client
+  neovide # Neovim GUI client
 )
 
 # Install stuff from yay
