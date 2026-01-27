@@ -1,4 +1,4 @@
-- greeter (need to configure during the installation)
+- ~~greeter (need to configure during the installation)~~ ✓ FIXED
 - workspace renaming
 - cron jobs
 - logout menu style

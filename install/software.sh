@@ -72,17 +72,25 @@ pacman=(
   hyprpaper
   socat
   waybar
+  greetd
+  greetd-tuigreet
   rofi-wayland
+  gvfs
+  gvfs-mtp
 
   # Screen sharing / portals (for Google Meet, OBS, etc.)
   xdg-desktop-portal
   xdg-desktop-portal-hyprland
   xdg-desktop-portal-gtk
+  xdg-utils
   pipewire
   wireplumber
+  kvantum
+  qt5ct
+  qt6ct
+  qt6-svg
 
   # Notification daemon
-  mako
 
   # Apps
   neovim
@@ -99,7 +107,6 @@ pacman=(
   obs-studio
   minikube
   qbittorrent
-  pinta
   github-cli
   yazi      # terminal file manager
   fastfetch # Shows sysinfo in terminal
@@ -119,11 +126,19 @@ pacman=(
   hunspell-en_us
   sysstat
   acpi
+  inxi
+  yad
+  gnome-system-monitor
+  loupe
+  nwg-look
   lsof
   direnv
   zsh
   blueman
   wl-clipboard # Wayland clipboard utility
+  pavucontrol
+  pamixer
+  playerctl
 
   # Font manager
   gucharmap
@@ -154,9 +169,12 @@ yay=(
   wlogout
   pcloud-drive
   devour
+  wallust
   pinta
+  hyprpolkitagent
   slack-desktop
   drawio-desktop
+  wdisplays
 )
 
 # Install stuff from yay
