@@ -100,10 +100,8 @@ pacman=(
   swaync
 
   # Themes and appearance
-  xcursor-breeze     # Cursor theme
   gtk3               # GTK3 toolkit
   gtk4               # GTK4 toolkit
-  arc-gtk-theme      # Arc GTK theme
   papirus-icon-theme # Icon theme
 
   # Bluetooth
@@ -235,7 +233,6 @@ yay=(
   wlogout
   pcloud-drive
   devour
-  wallust
   pinta
   hyprpolkitagent
   slack-desktop
