@@ -32,13 +32,15 @@ workspace = "{id}:{clients}" # {id}, {delim} and {clients} are supported
 # take class name from 'hyprctl clients'
 "DEFAULT" = "{class} "
 "chromium" = ""
-
+"firefox" = "<span color='orange'></span>"
+"slack" = "󰒱"
 "emacs"= ""
 "(?i)waydroid.*" = "droid"
-"Nvim" = ""
+"Nvim" = "<span color='green'></span>"
+"(?i)virtualbox.*" = ""
+"(?i)obs" = "OBS"
 
-
-"(?i)Kitty" = ""
+"(?i)Kitty" = "<span color='blue'></span>"
 [class_active]
 DEFAULT = "{class}"
 "emacs"= ""
@@ -52,11 +54,14 @@ DEFAULT = "{class}"
 # "(?i)Kitty" = "*TERM*"
 
 [title_in_class."(?i)kitty"]
-"Nvim" = ""
+"Nvim" = "<span color='green'></span>"
 "python" = ""
 
-[title_in_class_active."(?i)chromium"]
+[title_in_class."(?i)firefox"] # for specific web sites
 "(?i)twitch" = "<span color='purple'>{icon}</span>"
+
+"(?i)youtube" = "<span color='red'> </span>"
+
 
 # [title_in_initial_class."(?i)kitty"]
 # "(?i)neomutt" = "neomutt"

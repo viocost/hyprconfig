@@ -181,8 +181,8 @@ pacman=(
   nodejs
 
   # LaTeX
-  texlive-bin
-  texlive-latexextra
+  #texlive-bin
+  #texlive-latexextra
 
   # Wireless tools
   iw
@@ -237,7 +237,7 @@ yay=(
   hyprpolkitagent
   slack-desktop
   drawio-desktop
-  wdisplays
+  nvg-displays
   hyprshot
   hyprland-autoname-workspaces-git
   neovide # Neovim GUI client
