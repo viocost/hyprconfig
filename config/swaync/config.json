@@ -45,12 +45,10 @@
       "image-radius": 10
     },
     "volume": {
-      "label": "",
-      "step": 5
+      "label": ""
     },
     "backlight": {
-      "label": "󰃞",
-      "step": 5
+      "label": "󰃞"
     },
     "buttons-grid": {
       "actions": [

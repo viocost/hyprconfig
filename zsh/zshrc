@@ -267,6 +267,13 @@ fi
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+
+export BROWSER=firefox
+export EDITOR=nvim
+export VISUAL=nvim
+export PAGER=less
+export TERMINAL=kitty
+
 # Option 2: Starship prompt (comment out agnoster above to use this)
 # if command -v starship &> /dev/null; then
 #   # https://github.com/starship/starship/issues/560#issuecomment-2339030231

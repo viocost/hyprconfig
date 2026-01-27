@@ -8,7 +8,13 @@ SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 mkdir -p "$SCREENSHOT_DIR"
 
 # Path to hyprshot script
-HYPRSHOT="$HOME/hyprconfig/scripts/hyprshot.sh"
+HYPRSHOT="$HOME/.local/bin/scripts/hyprshot.sh"
+
+# Check if swappy is installed (for edit functionality)
+SWAPPY_AVAILABLE=false
+if command -v swappy &> /dev/null; then
+  SWAPPY_AVAILABLE=true
+fi
 
 # Rofi menu options
 OPTIONS="🔳 Active Window\n✂️ Select Region\n🖥️ Active Monitor\n"
@@ -54,16 +60,33 @@ send_notification() {
   # Using image-path hint for swaync to display the screenshot thumbnail
   (
     local message="Image saved and copied to the clipboard.\n\nPath: <i>${filepath}</i><img src=\"${filepath}\">"
-    ACTION=$(notify-send "📸 Screenshot saved" \
-      "${message}" \
-      -t 5000 \
-      -a "Screenshot" \
-      --action="edit=Edit" \
-      --urgency=normal)
+    
+    # Only add Edit action if swappy is available
+    if [ "$SWAPPY_AVAILABLE" = true ]; then
+      ACTION=$(notify-send "📸 Screenshot saved" \
+        "${message}" \
+        -t 5000 \
+        -a "Screenshot" \
+        --action="edit=Edit" \
+        --urgency=normal)
 
-    # If user clicked Edit, open swappy
-    if [ "$ACTION" = "edit" ]; then
-      swappy -f "$filepath" &
+      # If user clicked Edit, open swappy
+      if [ "$ACTION" = "edit" ]; then
+        swappy -f "$filepath" &
+      fi
+    else
+      # No edit action, just show notification
+      notify-send "📸 Screenshot saved" \
+        "${message}" \
+        -t 5000 \
+        -a "Screenshot" \
+        --urgency=normal
+      
+      # Show a one-time warning about swappy
+      notify-send "⚠️ Screenshot Editor Not Available" \
+        "Install <b>swappy</b> to enable screenshot editing.\n\nRun: <i>sudo pacman -S swappy</i>" \
+        -t 8000 \
+        --urgency=low &
     fi
   ) &
 }

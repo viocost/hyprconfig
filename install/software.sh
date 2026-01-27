@@ -77,6 +77,8 @@ pacman=(
   rofi-wayland
   gvfs
   gvfs-mtp
+  networkmanager
+  network-manager-applet
 
   # Screen sharing / portals (for Google Meet, OBS, etc.)
   xdg-desktop-portal
@@ -84,6 +86,10 @@ pacman=(
   xdg-desktop-portal-gtk
   xdg-utils
   pipewire
+  pipewire-audio
+  pipewire-pulse
+  pipewire-alsa
+  pipewire-jack
   wireplumber
   kvantum
   qt5ct
@@ -91,6 +97,18 @@ pacman=(
   qt6-svg
 
   # Notification daemon
+  swaync
+
+  # Themes and appearance
+  xcursor-breeze        # Cursor theme
+  gtk3                  # GTK3 toolkit
+  gtk4                  # GTK4 toolkit
+  arc-gtk-theme         # Arc GTK theme
+  papirus-icon-theme    # Icon theme
+
+  # Bluetooth
+  bluez                 # Bluetooth protocol stack
+  bluez-utils           # Bluetooth utilities
 
   # Apps
   neovim
@@ -114,6 +132,7 @@ pacman=(
   # Screenshot tool for Wayland
   grim
   slurp
+  swappy        # Screenshot editor (Wayland native)
 
   # Utils
   cronie
@@ -123,6 +142,7 @@ pacman=(
   curl
   sqlite
   python-pip
+  python-urllib3
   hunspell-en_us
   sysstat
   acpi
@@ -139,6 +159,18 @@ pacman=(
   pavucontrol
   pamixer
   playerctl
+  thunar
+  thunar-volman
+  tumbler
+  thunar-archive-plugin
+  htop
+  fzf
+  reflector
+  unzip            # ZIP archive support
+  unrar            # RAR archive support
+  p7zip            # 7z archive support
+  ntfs-3g          # NTFS filesystem support
+  exfatprogs       # exFAT filesystem support
 
   # Font manager
   gucharmap
@@ -163,6 +195,39 @@ for i in "${pacman[@]}"; do
   install pacman $i
 done
 
+# ============================================
+# Install YAY AUR Helper if not present
+# ============================================
+if ! command -v yay &> /dev/null; then
+  echo ""
+  echo "📦 Installing YAY AUR helper..."
+  
+  # Ensure base-devel and git are installed
+  sudo pacman -S --needed --noconfirm git base-devel
+  
+  # Clone and install yay
+  TEMP_YAY_DIR="/tmp/yay-install-$$"
+  git clone https://aur.archlinux.org/yay.git "$TEMP_YAY_DIR"
+  cd "$TEMP_YAY_DIR"
+  makepkg -si --noconfirm
+  cd -
+  rm -rf "$TEMP_YAY_DIR"
+  
+  if command -v yay &> /dev/null; then
+    echo "✓ YAY installed successfully"
+  else
+    echo "❌ Failed to install YAY. Some AUR packages may not install."
+    read -p "Continue anyway? (y/N): " answer
+    if [[ ! "${answer,,}" =~ ^y(es)?$ ]]; then
+      exit 1
+    fi
+  fi
+else
+  echo "✓ YAY is already installed"
+fi
+
+echo ""
+
 yay=(
   # Steganography
   steghide
@@ -175,6 +240,9 @@ yay=(
   slack-desktop
   drawio-desktop
   wdisplays
+  hyprshot
+  hyprland-autoname-workspaces-git
+  neovide      # Neovim GUI client
 )
 
 # Install stuff from yay

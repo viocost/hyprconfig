@@ -89,29 +89,52 @@ hyprconfig/
 - waybar - Status bar
 - rofi-wayland - Application launcher
 - hyprpaper - Wallpaper manager
-- mako - Notification daemon
+- swaync - Notification daemon
+- hyprlock & hypridle - Screen lock and idle management
 
 ### Screen Sharing & Media
 - xdg-desktop-portal (+ hyprland & gtk backends)
-- pipewire & wireplumber
+- pipewire (audio/video, includes pulse/alsa/jack support)
+- wireplumber (session manager)
 - obs-studio
 - grim & slurp (screenshots)
+- hyprshot (screenshot tool)
 
 ### Development Tools
 - neovim, emacs
+- neovide (Neovim GUI)
 - kitty terminal
 - docker, docker-compose
 - github-cli
 - tmux
 - yazi (file manager)
+- fzf (fuzzy finder)
 
 ### Applications
-- chromium
+- chromium, firefox
 - bitwarden
 - remmina (remote desktop)
+- thunar (file manager)
+
+### System Utilities
+- NetworkManager - Network management
+- bluez & blueman - Bluetooth support
+- reflector - Mirror list management
+- cronie - Cron job scheduler
+- htop - System monitor
+- Archive support: unzip, unrar, p7zip
+- Filesystem support: ntfs-3g, exfatprogs
+
+### Themes & Appearance
+- GTK3/GTK4 with Arc theme
+- Qt5/Qt6 theming tools
+- Breeze cursor theme
+- Papirus icon theme
 
 ### Optional (Prompted During Install)
 - NVIDIA drivers (nvidia, nvidia-utils, nvidia-settings)
+- Fingerprint authentication (fprintd, imagemagick)
+- Shell enhancements (zoxide, starship)
 
 ## Utilities
 
@@ -153,9 +176,11 @@ The function will:
 
 ## TODO
 
-- [ ] Add fonts installation
-- [ ] Create symlinks script
-- [ ] Port essential runtime scripts
-- [ ] Build Hyprland configs from scratch
-- [ ] Create waybar configuration
-- [ ] Set up services/cron jobs
+- [x] Add fonts installation ✓
+- [x] Create symlinks script ✓
+- [x] Port essential runtime scripts ✓
+- [x] Build Hyprland configs from scratch ✓
+- [x] Create waybar configuration ✓
+- [x] Set up services/cron jobs ✓
+- [ ] Add custom wallpaper management
+- [ ] Document custom keybindings

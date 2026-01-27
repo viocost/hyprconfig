@@ -21,6 +21,7 @@ function makedir() {
 echo "Creating directories..."
 makedir ~/.local/bin
 makedir ~/.config
+makedir ~/Pictures/Screenshots
 
 echo "Linking scripts..."
 rm -rf ~/.local/bin/scripts 2>/dev/null

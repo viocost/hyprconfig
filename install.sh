@@ -69,6 +69,11 @@ run_full_install() {
   sleep 1
   ./run.sh ./install/greeter.sh
 
+  # Setup system services
+  echo "⚙️  Enabling system services..."
+  sleep 1
+  ./run.sh ./install/services.sh
+
   echo ""
   echo "=========================================="
   echo "  Installation Complete!"
