@@ -34,18 +34,18 @@ echo "📝 Creating greetd configuration..."
 # Create the config directory if it doesn't exist
 if [[ ! -d /etc/greetd ]]; then
   echo "Creating /etc/greetd directory..."
-  mkdir -p /etc/greetd
+  sudo mkdir -p /etc/greetd
 fi
 
 # Backup existing config if it exists
 if [[ -f /etc/greetd/config.toml ]]; then
   echo "Backing up existing config to /etc/greetd/config.toml.backup"
-  cp /etc/greetd/config.toml /etc/greetd/config.toml.backup
+  sudo cp /etc/greetd/config.toml /etc/greetd/config.toml.backup
 fi
 
 # Write the new configuration
 echo "Writing configuration to /etc/greetd/config.toml..."
-tee /etc/greetd/config.toml >/dev/null <<'EOF'
+sudo tee /etc/greetd/config.toml >/dev/null <<'EOF'
 [terminal]
 # The VT to run the greeter on. Can be "next", "current" or a number
 # designating the VT.
@@ -71,7 +71,7 @@ fi
 
 echo ""
 echo "🔧 Enabling greetd service..."
-systemctl enable greetd.service
+sudo systemctl enable greetd.service
 
 if [[ $? -eq 0 ]]; then
   echo "✓ greetd service enabled successfully"
