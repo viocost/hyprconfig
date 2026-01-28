@@ -79,6 +79,17 @@ run_full_install() {
   sleep 1
   ./run.sh ./install/cron.sh
 
+  # Setup Doom Emacs (optional)
+  echo ""
+  read -p "📝 Would you like to set up Doom Emacs? (y/N) " emacs_answer
+  if [[ "${emacs_answer,,}" =~ ^y(es)?$ ]]; then
+    echo "📝 Setting up Doom Emacs..."
+    sleep 1
+    ./run.sh ./install/emacs.sh
+  else
+    echo "⏭️  Skipping Doom Emacs setup."
+  fi
+
   echo ""
   echo "=========================================="
   echo "  Installation Complete!"
@@ -97,7 +108,15 @@ run_full_install() {
     echo "     ~/hyprconfig/install/fingerprint-manager.sh enroll right-index-finger"
   fi
   echo ""
-  echo "3. 🔄 Reboot to apply all changes"
+  if [[ "${emacs_answer,,}" =~ ^y(es)?$ ]]; then
+    echo "3. 📝 Doom Emacs:"
+    echo "   Run 'doom sync' if you make changes to your config"
+    echo "   Run 'doom upgrade' periodically to update packages"
+    echo ""
+    echo "4. 🔄 Reboot to apply all changes"
+  else
+    echo "3. 🔄 Reboot to apply all changes"
+  fi
   echo ""
   echo "=========================================="
   echo ""
