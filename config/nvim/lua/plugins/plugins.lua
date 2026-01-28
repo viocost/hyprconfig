@@ -263,7 +263,7 @@ return {
     "reisub0/hot-reload.vim",
   },
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     recommended = true,
     keys = function(_, keys)
       -- Populate the keys based on the user's options
