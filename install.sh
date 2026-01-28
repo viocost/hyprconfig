@@ -74,6 +74,11 @@ run_full_install() {
   sleep 1
   ./run.sh ./install/services.sh
 
+  # Setup cron jobs
+  echo "⏰ Setting up cron jobs..."
+  sleep 1
+  ./run.sh ./install/cron.sh
+
   echo ""
   echo "=========================================="
   echo "  Installation Complete!"

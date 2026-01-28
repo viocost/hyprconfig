@@ -39,6 +39,8 @@ workspace = "{id}:{clients}" # {id}, {delim} and {clients} are supported
 "Nvim" = ""
 "(?i)virtualbox.*" = ""
 "(?i)obs" = "OBS"
+"virt-manager" = ""
+"thunar" = ""
 
 "(?i)Kitty" = ""
 [class_active]
