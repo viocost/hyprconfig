@@ -1,5 +1,5 @@
-alias sactivate="sudo systemctl enable --now"
-alias sdeactivate="sudo systemctl disable --now"
+alias senable="sudo systemctl enable --now"
+alias sdisable="sudo systemctl disable --now"
 alias sstart="sudo systemctl start"
 alias sstop="sudo systemctl stop"
 alias srestart="sudo systemctl restart"
