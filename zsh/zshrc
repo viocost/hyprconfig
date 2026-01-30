@@ -11,10 +11,16 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
+
+zinit wait"1" lucid for zsh-users/zsh-autosuggestions
+zinit wait"1" lucid for zsh-users/zsh-completions
+zinit wait"1" lucid for zsh-users/zsh-syntax-highlighting
+
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit wait lucid for junegunn/fzf
 
 # Lazy load NVM for faster shell startup
 export NVM_COMPLETION=true
@@ -59,41 +65,9 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# ============================================
-# Aliases
-# ============================================
 
-# Basic aliases
-alias ls='ls --color'
-alias vim='nvim'
-alias v='nvim .'
-alias v.='nvim .'
-alias c='clear'
-alias ll='ls -la'
-alias update='sudo pacman -Syyu;yay -Su'
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq);yay -Sc --noconfirm'
 
-# Navigation
-alias al="vim ~/.config/aliases"
-alias proj="cd ~/projects"
-alias secrets="vim ~/.local/.secrets"
-alias gc="cd $HOME/.config"
-alias hosts="sudo nvim /etc/hosts"
-alias i3conf="vim ~/.config/i3/config"
-alias hyprconf="vim ~/.config/hypr/hyprland.conf"
-alias zconf="vim ~/.zshrc"
 
-# Pacman & Package Management
-alias unlock="sudo rm /var/lib/pacman/db.lck"
-alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
-alias pci="sudo pacman -Sy --noconfirm"
-alias pcr="sudo pacman -Runs --noconfirm"
-alias pcs="pacman -Ss"
-alias pcq="pacman -Qi"
-alias yi="yay -Sy --noconfirm"
-alias yr="yay -Runs --noconfirm"
-alias yq="yay -Qi"
-alias yl="yay -Qdt"
 
 # Mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
@@ -101,63 +75,6 @@ alias mirrord="sudo reflector --latest 30 --number 10 --sort delay --save /etc/p
 alias mirrors="sudo reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
 
-# Docker
-alias dids="docker container ls | cut -d ' ' -f1 | sed 1d"
-alias drun="docker container run"
-alias dkill="docker container kill"
-alias dsh="run_bash_in_docker_container"
-
-# Maven
-alias mvn-ci="mvn clean install"
-alias mvn-ci-sk="mvn clean install -DskipTests"
-alias mvn-it="mvn failsafe:integration-test"
-alias mvn-check-updates="mvn versions:display-property-updates"
-
-# Tmux
-alias tconf="nvim ~/.config/tmux/tmux.conf"
-alias tls="tmux ls"
-alias tn="tmux new -s "
-alias ts="$SCRIPTS/cli/sessionizer.sh"
-alias t="$SCRIPTS/cli/sessionizer.sh"
-alias term="t term"
-alias dev="t dev"
-
-# Terraform
-alias tf="terraform"
-
-# Neovim flavors
-alias nvchad="NVIM_APPNAME=nvchad nvim"
-alias lazyvim="NVIM_APPNAME=lazyvim nvim"
-alias astronvim="NVIM_APPNAME=astronvim nvim"
-
-# Systemd services
-alias sactivate="sudo systemctl enable --now"
-alias sdeactivate="sudo systemctl disable --now"
-alias sstart="sudo systemctl start"
-alias sstop="sudo systemctl stop"
-alias srestart="sudo systemctl restart"
-alias sstatus="sudo systemctl status"
-
-# Screen layouts (X11/autorandr specific)
-alias shome="~/.screenlayout/home.sh"
-alias swork="~/.screenlayout/work.sh"
-alias srhome="~/.screenlayout/reset.sh"
-alias sralone="~/.screenlayout/reset-standalone.sh"
-alias salone="~/.screenlayout/standalone.sh"
-
-# Utilities
-alias freeram="~/.local/bin/scripts/freeram.sh"
-alias CAPS="xdotool key Caps_Lock"
-alias rcp="rsync -ah --progress"
-
-# AWS (if using CS)
-alias awscreds="source aws-expose-creds"
-alias awsclear="export AWS_PROFILE="
-alias chrome="chromium --disable-web-security --user-data-dir=\"$HOME/.dummy-chrome-data\""
-
-# Launch with devour (X11)
-alias arandr="devour arandr"
-alias zoom="devour ~/.local/bin/zoom"
 
 # ============================================
 # Functions
@@ -189,37 +106,8 @@ ex() {
   fi
 }
 
-# Git checkout remote branch
-function gitr() {
-  git fetch -a && git checkout -b $1 origin/$1
-}
 
-# Tmux session manager
-function tm() {
-  if [[ -z $1 ]]; then
-    tmux
-  else
-    tmux new -s $1
-  fi
-}
 
-# AWS CodeArtifact login for CS
-function csyarnlogin() {
-  awscreds
-  csq aws codeartifact login --tool yarn
-}
-
-# Map drawing tablet to screen (X11)
-xppen() {
-  tablet="UGTABLET 6 inch PenTablet Pen (0)"
-  selected_screen=$(xrandr --query | grep " connected" | awk '{print $1}' | fzf --prompt="Select screen for tablet: ")
-  if [ -n "$selected_screen" ]; then
-    xinput map-to-output "$tablet" "$selected_screen"
-    echo "Tablet mapped to $selected_screen"
-  else
-    echo "Screen selection cancelled"
-  fi
-}
 
 # ============================================
 # Load additional aliases from config
@@ -235,8 +123,6 @@ fi
 # Shell integrations
 # ============================================
 
-# FZF
-eval "$(fzf --zsh)"
 
 # zoxide (smart cd replacement) - install with: pacman -S zoxide
 if command -v zoxide &> /dev/null; then
