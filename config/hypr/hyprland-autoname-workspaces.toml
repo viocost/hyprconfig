@@ -30,10 +30,10 @@ workspace = "{id}:{clients}" # {id}, {delim} and {clients} are supported
 # Add your icons mapping
 # use double quote the key and the value
 # take class name from 'hyprctl clients'
-"DEFAULT" = "{class} "
+"DEFAULT" = "󰘔"
 "chromium" = ""
 "firefox" = ""
-"slack" = "󰒱"
+"(?i)slack" = "󰒱"
 "emacs"= ""
 "(?i)waydroid.*" = "droid"
 "Nvim" = ""
@@ -42,10 +42,11 @@ workspace = "{id}:{clients}" # {id}, {delim} and {clients} are supported
 "virt-manager" = ""
 "thunar" = ""
 "(?i)torrent" = "󰍇"
+"pavucontrol" = ""
 
 "(?i)Kitty" = ""
 [class_active]
-DEFAULT = "{class}"
+"DEFAULT" = "󰘔"
 "emacs"= ""
 #"(?i)ExampleOneTerm" = "<span foreground='red'>{icon}</span>"
 

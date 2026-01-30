@@ -16,9 +16,6 @@ zinit wait"1" lucid for zsh-users/zsh-autosuggestions
 zinit wait"1" lucid for zsh-users/zsh-completions
 zinit wait"1" lucid for zsh-users/zsh-syntax-highlighting
 
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit wait lucid for junegunn/fzf
 
@@ -64,9 +61,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-
-
 
 
 # Mirrors
@@ -160,10 +154,3 @@ export VISUAL=nvim
 export PAGER=less
 export TERMINAL=kitty
 
-# Option 2: Starship prompt (comment out agnoster above to use this)
-# if command -v starship &> /dev/null; then
-#   # https://github.com/starship/starship/issues/560#issuecomment-2339030231
-#   precmd() { precmd() { echo "" } }
-#   alias clear="precmd() { precmd() { echo } } && clear"
-#   eval "$(starship init zsh)"
-# fi
