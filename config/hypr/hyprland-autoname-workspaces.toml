@@ -41,6 +41,7 @@ workspace = "{id}:{clients}" # {id}, {delim} and {clients} are supported
 "(?i)obs" = "OBS"
 "virt-manager" = ""
 "thunar" = ""
+"(?i)torrent" = "󰍇"
 
 "(?i)Kitty" = ""
 [class_active]

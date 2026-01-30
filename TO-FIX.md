@@ -1,8 +1,8 @@
 - ~~greeter (need to configure during the installation)~~ ✓ FIXED
-- workspace renaming
-- cron jobs
-- logout menu style
+- workspace renaming fixed
+- cron jobs fixed
+- logout menu style fixed
 - chrome (not fixable as of now)
 - emacs script (optional)
-- rofi theme
-- screenshots 
+- rofi theme fixed
+- screenshots fixed
