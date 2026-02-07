@@ -36,6 +36,7 @@ application/ogg=mplayer.desktop
 audio/x-flac=mplayer.desktop
 audio/mp4=mplayer.desktop
 application/x-flash-video=mplayer.desktop
+x-scheme-handler/org-roam=org-roam.desktop
 
 [Added Associations]
 application/pdf=evince.desktop;

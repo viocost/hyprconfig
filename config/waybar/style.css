@@ -91,6 +91,7 @@ tooltip {
 #custom-currencies,
 #custom-kbsync,
 #custom-vpn,
+#custom-usb,
 #power-profiles-daemon,
 #temperature,
 #battery,
@@ -257,15 +258,21 @@ window#waybar.empty #window {
   margin-right: 5px;
 }
 
-#cpu {
-  border-radius: 6px 0 0 6px;
-  color: #89dceb;
+#custom-usb {
+  border-radius: 6px;
+  color: #a6adc8;
+  margin-right: 5px;
 }
 
 #memory {
   border-radius: 6px;
   margin-right: 5px;
   color: #f5c2e7;
+}
+
+#cpu {
+  border-radius: 6px;
+  color: #89dceb;
 }
 
 #temperature.critical {

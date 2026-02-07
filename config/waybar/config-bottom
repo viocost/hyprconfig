@@ -27,6 +27,7 @@
 	"group/hardware": {
 		"orientation": "horizontal",
 		"modules":[
+      "custom/usb",
       "memory",
       "cpu",
       "temperature",

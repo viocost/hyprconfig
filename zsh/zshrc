@@ -153,4 +153,4 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
 export TERMINAL=kitty
-
+export ORG_ROAM_DB_PATH=~/.config/emacs/.local/cache/org-roam.db

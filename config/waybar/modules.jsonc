@@ -227,6 +227,15 @@
     "tooltip": true,
   },
 
+  "custom/usb": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/usb-storage.py",
+    "interval": 5,
+    "tooltip": true,
+    "on-click": "thunar"
+  },
+
   "custom/updates": {
     //"format": " {}",
     "format": " {}",

@@ -12,3 +12,5 @@ alias zoom="devour ~/.local/bin/zoom"
 alias tf="terraform"
 
 alias yz="yazi"
+
+alias hctl="hyprctl"
