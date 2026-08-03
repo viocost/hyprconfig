@@ -4,7 +4,7 @@ echo $1
 
 selected=$((
   tmux ls -F '#{session_id}: #{session_name}' | sed 's/\$//' | awk -F ": " '{print $2}' | sed 's/\(.*\)/ \1/'
-  find ~/projects ~/cs ~/cs/app-frontends/ ~/cs/app-services/packages/clients/external ~/cs/app-services/services ~/cs/app-services/shared-packages/web-clients ~/cs/app-services/shared-packages/ ~/cs/app-services/packages/ ~/cs/app-frontends/apps ~/cs/app-frontends/packages ~/cs/app-frontends/libraries ~/cs/app-services ~/heap ~/ ~/ubuntu-config -mindepth 1 -maxdepth 3 -type d -prune -o -name node_modules | sed 's/\(.*\)/󰉖 \1/'
+  find ~/projects ~/  -mindepth 1 -maxdepth 3 -type d -prune -o -name node_modules | sed 's/\(.*\)/󰉖 \1/'
 ) | fzf)
 
 if [[ -z $selected ]]; then

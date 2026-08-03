@@ -8,7 +8,7 @@ WINDOW_TITLE=$(echo "$ACTIVE_WINDOW_JSON" | jq -r '.title')
 send_nvim_command() {
   NVIM_SERVER=$(ps -o command= -p "$FOCUSED_PID" | grep -oP 'NVIM_LISTEN_ADDRESS=\K\S+')
   if [ -n "$NVIM_SERVER" ]; then
-    nvim --server "$NVIM_SERVER" --remote-send "<C-w>h"
+    nvim --server "$NVIM_SERVER" --remote-send "<C-w>l"
     exit 0
   fi
 }
