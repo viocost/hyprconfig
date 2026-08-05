@@ -229,7 +229,7 @@ echo ""
 
 yay=(
   # Steganography
-  steghide
+  steghide-bin
   wlogout
   pcloud-drive
   devour
