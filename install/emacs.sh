@@ -67,6 +67,14 @@ if [ ! -d ~/.config/emacs ]; then
     echo "❌ Failed to clone Doom Emacs"
     exit 1
   fi
+
+  echo "📦 Initializing submodules (doom+ modules)..."
+  if git -C ~/.config/emacs submodule update --init --recursive; then
+    echo "✓ Submodules initialized successfully"
+  else
+    echo "❌ Failed to initialize submodules"
+    exit 1
+  fi
 fi
 
 # 2. Clone Knowledge Base (org-roam)
