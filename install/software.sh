@@ -70,6 +70,7 @@ pacman=(
   hyprlock
   hypridle
   hyprpaper
+  kanshi # Dynamic monitor profiles (auto-apply layout on connect/hotplug)
   socat
   waybar
   greetd
