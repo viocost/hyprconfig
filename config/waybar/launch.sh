@@ -9,7 +9,7 @@ sleep 0.5
 
 # Monitor variables
 MONITOR_LEFT="DP-1"      # Workspaces 1-8
-MONITOR_MIDDLE="DP-4"    # Workspaces 9-16
+MONITOR_MIDDLE="DP-6"    # Workspaces 9-16
 MONITOR_RIGHT="eDP-1"    # Workspaces 17-20
 
 # Launch top bar

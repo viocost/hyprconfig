@@ -5,40 +5,40 @@
 # A profile matches when ALL outputs it lists are connected, so keep the most
 # specific profiles (most monitors) at the TOP.
 #
-# Outputs are matched by CONNECTOR NAME (DP-1, DP-4, eDP-1) to stay consistent
+# Outputs are matched by CONNECTOR NAME (DP-1, DP-6, eDP-1) to stay consistent
 # with ~/.config/hypr/hyprland/monitor-vars.conf, which defines the logical
 # monitors used for workspace placement:
 #
 #   $monitor1 = DP-1    (left   - Dell 4K   3840x2160)  -> workspaces 1-8
-#   $monitor2 = DP-4    (middle - Dell 1080p 1920x1080)  -> workspaces 9-16
-#   $monitor3 = eDP-1   (internal laptop    1920x1080)  -> workspaces 17-20
+#   $monitor2 = DP-6    (middle - Dell 1080p 1920x1080)  -> workspaces 9-16
+#   $monitor3 = eDP-1   (internal laptop    1920x1200)  -> workspaces 17-20
 #
 # kanshi only sets the PHYSICAL layout (mode/position/scale). The
 # workspace<->monitor binding lives in workspaces.conf and is applied by
 # Hyprland automatically once these outputs are brought up here, so
 # monitor1/2/3 keep the same meaning across every profile.
 #
-# To capture / add a profile from the current live layout:
-#   1. Arrange monitors however you like (nwg-displays or hyprctl).
-#   2. scripts/generate-kanshi-profile.sh <name> --append
-#   3. killall kanshi 2>/dev/null; kanshi &      (or just relog)
+# Workflow:
+#   nwg-displays mode (default):
+#     - Arrange monitors with nwg-displays; Hyprland reads monitors.conf directly.
+#   kanshi mode:
+#     - Run enable-kanshi to capture current layout as a profile and take over.
+#     - Run disable-kanshi to revert to nwg-displays / monitors.conf mode.
 
 # --- Full dock: 4K (left) + 1080p (middle) + internal (right) ---
-# Positions mirror the previous static monitors.conf.
 profile docked_full {
-    output DP-1 mode 3840x2160@60Hz position 49,0 scale 2.0
-    output DP-4 mode 1920x1080@60Hz position 1969,0 scale 1.0
-    output eDP-1 mode 1920x1080@60Hz position 3889,0 scale 1.0
+    output DP-1  mode 3840x2160@60Hz position 0,0    scale 2.0
+    output DP-6  mode 1920x1080@60Hz position 1920,0 scale 1.0
+    output eDP-1 mode 1920x1200@60Hz position 3840,0 scale 1.0
 }
 
-# --- Dock, lid closed: external Dells only (internal not referenced,
-#     so this matches when eDP-1 is absent) ---
+# --- Dock, lid closed: external Dells only ---
 profile docked_external {
-    output DP-1 mode 3840x2160@60Hz position 0,0 scale 2.0
-    output DP-4 mode 1920x1080@60Hz position 1920,0 scale 1.0
+    output DP-1 mode 3840x2160@60Hz position 0,0    scale 2.0
+    output DP-6 mode 1920x1080@60Hz position 1920,0 scale 1.0
 }
 
 # --- Undocked: laptop panel only ---
 profile laptop {
-    output eDP-1 mode 1920x1080@60Hz position 0,0 scale 1.0
+    output eDP-1 mode 1920x1200@60Hz position 0,0 scale 1.0
 }
