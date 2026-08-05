@@ -54,3 +54,4 @@ application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 image/png=krita_png.desktop;com.github.PintaProject.Pinta.desktop;
 application/vnd.comicbook-rar=org.pwmt.zathura.desktop;
+text/javascript=vim.desktop;
