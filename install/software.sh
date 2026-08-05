@@ -143,6 +143,7 @@ pacman=(
   python-urllib3
   hunspell-en_us
   sysstat
+  nwg-displays
   acpi
   inxi
   yad
@@ -237,7 +238,6 @@ yay=(
   hyprpolkitagent
   slack-desktop
   drawio-desktop
-  nvg-displays
   hyprshot
   hyprland-autoname-workspaces-git
   neovide # Neovim GUI client
