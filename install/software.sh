@@ -103,6 +103,7 @@ pacman=(
   # Themes and appearance
   gtk3               # GTK3 toolkit
   gtk4               # GTK4 toolkit
+  arc-gtk-theme-eos  # Arc GTK theme (Arc/Arc-Dark/Arc-Darker) for dark app titlebars
   papirus-icon-theme # Icon theme
 
   # Bluetooth
