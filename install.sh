@@ -64,6 +64,11 @@ run_full_install() {
   sleep 1
   ./run.sh ./install/symlinks.sh
 
+  # Generate host-specific waybar config (CPU core count)
+  echo "📊 Configuring waybar (CPU cores)..."
+  sleep 1
+  ./run.sh ./install/waybar.sh
+
   # Setup greeter
   echo "👋 Setting up greeter (greetd/tuigreet)..."
   sleep 1
