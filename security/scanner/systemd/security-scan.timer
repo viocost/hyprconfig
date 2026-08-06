@@ -1,0 +1,11 @@
+[Unit]
+Description=Run host integrity scan on boot and every 3h of uptime
+
+[Timer]
+# Shortly after boot (let the session/EDR settle), then every 3h of uptime.
+OnBootSec=3min
+OnUnitActiveSec=3h
+Unit=security-scan.service
+
+[Install]
+WantedBy=timers.target

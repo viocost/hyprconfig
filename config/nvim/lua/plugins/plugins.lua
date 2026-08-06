@@ -96,19 +96,67 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
+    opts = function(_, opts)
+      -- For JS/TS files, only run a formatter if the project actually
+      -- declares one. If a Prettier config exists -> use Prettier. If a Biome
+      -- config exists -> use Biome. Otherwise no formatter runs and conform
+      -- falls back to LSP formatting (or nothing). This prevents Neovim from
+      -- reformatting whole files in projects that don't use Prettier/Biome.
+      local prettier_configs = {
+        ".prettierrc",
+        ".prettierrc.js",
+        ".prettierrc.cjs",
+        ".prettierrc.mjs",
+        ".prettierrc.json",
+        ".prettierrc.json5",
+        ".prettierrc.yaml",
+        ".prettierrc.yml",
+        ".prettierrc.toml",
+        "prettier.config.js",
+        "prettier.config.cjs",
+        "prettier.config.mjs",
+      }
+      local biome_configs = { "biome.json", "biome.jsonc" }
+
+      local function has_config(ctx, names)
+        return vim.fs.find(names, { path = ctx.dirname, upward = true })[1] ~= nil
+      end
+
+      -- Conditional variants that inherit the built-in prettier/biome configs
+      -- but only run when the project ships a matching config file. Using
+      -- distinct names keeps the plain "prettier" (used below for css/json/etc)
+      -- unconditional.
+      opts.formatters = opts.formatters or {}
+      opts.formatters.prettier_project = {
+        inherit = "prettier",
+        condition = function(_, ctx)
+          return has_config(ctx, prettier_configs)
+        end,
+      }
+      opts.formatters.biome_project = {
+        inherit = "biome",
+        condition = function(_, ctx)
+          return has_config(ctx, biome_configs)
+        end,
+      }
+
+      -- Prefer prettier, then biome; whichever project config is present wins.
+      local js = { "prettier_project", "biome_project", stop_after_first = true }
+
+      opts.formatters_by_ft = vim.tbl_deep_extend("force", opts.formatters_by_ft or {}, {
+        javascript = js,
+        typescript = js,
+        javascriptreact = js,
+        typescriptreact = js,
         css = { "prettier" },
         html = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
-      },
-    },
+      })
+
+      return opts
+    end,
   },
   {
     "folke/flash.nvim",

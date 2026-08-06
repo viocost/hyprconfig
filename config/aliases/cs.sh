@@ -7,7 +7,10 @@ alias shmac="ssh 192.168.1.129 -l konstantin.rybakov"
 
 alias chrome="chromium --disable-web-security --user-data-dir=\"$HOME/.dummy-chrome-data\""
 
-function csyarnlogin() {
-  awscreds
+function csyarn() {
+  csq aws codeartifact login --tool yarn
+}
+
+function csnpm() {
   csq aws codeartifact login --tool yarn
 }

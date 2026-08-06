@@ -1,0 +1,15 @@
+[Unit]
+Description=Host integrity scan (AIDE + pacman -Qkk)
+Documentation=file:/home/kostia/hyprconfig/security/scanner/README.md
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/security-scan scan
+# GUI user whose session receives the swaync notification.
+Environment=SUDO_USER=kostia
+# Keep the scan from starving the desktop.
+Nice=10
+IOSchedulingClass=idle
+# A clean scan exits 0; findings exit 1 (recorded, not treated as a crash).
+SuccessExitStatus=0 1

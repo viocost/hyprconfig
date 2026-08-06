@@ -143,7 +143,6 @@ if [ -n "$TMUX" ]; then
 else
   fastfetch 
 fi
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -154,3 +153,6 @@ export VISUAL=nvim
 export PAGER=less
 export TERMINAL=kitty
 export ORG_ROAM_DB_PATH=~/.config/emacs/.local/cache/org-roam.db
+
+#PATH
+export PATH="$HOME/.local/bin:$PATH"

@@ -84,6 +84,17 @@ run_full_install() {
   sleep 1
   ./run.sh ./install/cron.sh
 
+  # Setup security scanner (optional — only baseline a clean system)
+  echo ""
+  read -p "🛡️  Set up the security scanner (AIDE + pacman -Qkk)? Only do this on a clean system. (y/N) " sec_answer
+  if [[ "${sec_answer,,}" =~ ^y(es)?$ ]]; then
+    echo "🛡️  Setting up security scanner..."
+    sleep 1
+    ./run.sh ./install/security.sh
+  else
+    echo "⏭️  Skipping security scanner setup."
+  fi
+
   # Setup Doom Emacs (optional)
   echo ""
   read -p "📝 Would you like to set up Doom Emacs? (y/N) " emacs_answer
