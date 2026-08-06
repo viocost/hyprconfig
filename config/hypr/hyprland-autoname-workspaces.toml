@@ -60,6 +60,14 @@ workspace = "{id}:{clients}" # {id}, {delim} and {clients} are supported
 [title_in_class."(?i)kitty"]
 "Nvim" = ""
 "python" = ""
+# AI CLIs running in the terminal -> brand icon on the workspace tab.
+# tmux writes #{pane_current_command} into the title and opencode sets an
+# "OC | " prefix, so matching the title reliably reflects the running process
+# (works directly and inside tmux). Single-quoted TOML literals keep the regex
+# backslashes intact. openai icon = U+E7CF, claude icon = U+E861.
+'(?i)(opencode|^OC \| )' = ""
+'(?i)codex' = ""
+'(?i)claude' = ""
 
 [title_in_class."(?i)firefox"] # for specific web sites
 "(?i)twitch" = "<span color='purple'>{icon}</span>"

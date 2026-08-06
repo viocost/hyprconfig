@@ -63,10 +63,11 @@ if enable_service "cronie.service" "Cronie" "⏰" false false; then
   ENABLED_SERVICES+=("cronie - Cron job scheduler")
 fi
 
-# User services (enabled and started immediately)
-if enable_service "hyprland-autoname-workspaces.service" "hyprland-autoname-workspaces" "🏷️" true true; then
-  ENABLED_SERVICES+=("hyprland-autoname-workspaces - Auto-rename workspaces")
-fi
+# NOTE: hyprland-autoname-workspaces is intentionally NOT enabled as a systemd
+# user service. It is launched via `exec-once` in hypr/hyprland.conf with the
+# custom `--config ~/.config/hypr/hyprland-autoname-workspaces.toml`. Enabling
+# the systemd unit too caused a double-start ("already running, exit") and the
+# unit ignores the custom config (no --config in its ExecStart).
 
 # Summary
 echo ""
