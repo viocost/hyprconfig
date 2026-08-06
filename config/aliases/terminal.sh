@@ -7,6 +7,7 @@ alias t="$SCRIPTS/cli/sessionizer.sh"
 alias nv="$SCRIPTS/cli/neovide.sh"
 alias term="t term"
 alias dev="t dev"
+alias ag="t ag"
 
 function tm() {
   if [[ -z $1 ]]; then

@@ -64,7 +64,7 @@ else
     exit 0
   fi
 
-  if ! tmux has-session -t="${selected_name}" 2>/dev/null; then
+  if ! tmux has-session -t="${session_name}" 2>/dev/null; then
 
     if [[ -d ${selected:2} ]]; then
       tmux new-session -ds "${session_name}" -c ${selected:2}
