@@ -61,7 +61,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("apply-monitor-vars")
 
     hl.exec_cmd("~/.config/waybar/launch.sh")
-    hl.exec_cmd("hyprland-autoname-workspaces --config ~/.config/hypr/hyprland-autoname-workspaces.toml")
+    hl.exec_cmd("~/hyprconfig/hypr-autoname-shim/launch.sh")
     hl.exec_cmd("swaync")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("hyprpaper")

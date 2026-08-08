@@ -102,8 +102,8 @@ end)
 -- ============================================================================
 hl.bind(mod .. " + V",         hl.dsp.layout("togglesplit"))
 hl.bind(mod .. " + SHIFT + V", hl.dsp.layout("togglesplit"))
-hl.bind(mod .. " + S",         hl.dsp.exec_cmd("hyprctl keyword general:layout master"))
-hl.bind(mod .. " + E",         hl.dsp.exec_cmd("hyprctl keyword general:layout dwindle"))
+hl.bind(mod .. " + S",         function() hl.config({ general = { layout = "master" } }) end)
+hl.bind(mod .. " + E",         function() hl.config({ general = { layout = "dwindle" } }) end)
 
 -- ============================================================================
 -- Resize mode (submap, like i3) — SUPER + R

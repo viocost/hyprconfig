@@ -25,4 +25,4 @@ if [[ $WINDOW_TITLE == *"tmux"* ]]; then
   fi
 fi
 
-hyprctl dispatch movefocus l
+hyprctl dispatch 'hl.dsp.focus({ direction = "left" })'
