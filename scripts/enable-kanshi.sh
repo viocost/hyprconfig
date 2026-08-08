@@ -15,7 +15,7 @@
 set -euo pipefail
 
 KANSHI_CONFIG="${KANSHI_CONFIG:-$HOME/.config/kanshi/config}"
-KANSHI_MODE_CONF="${KANSHI_MODE_CONF:-$HOME/.config/hypr/kanshi-mode.conf}"
+KANSHI_MODE_CONF="${KANSHI_MODE_CONF:-$HOME/.config/hypr/kanshi-mode.lua}"
 
 # ── Sanity checks ────────────────────────────────────────────────────────────
 command -v hyprctl >/dev/null || { echo "error: hyprctl not found (is Hyprland running?)" >&2; exit 1; }
@@ -80,14 +80,14 @@ else
   echo "Appended profile '${PROFILE_NAME}' to ${KANSHI_CONFIG}."
 fi
 
-# ── Switch kanshi-mode.conf to kanshi mode ───────────────────────────────────
+# ── Switch kanshi-mode.lua to kanshi mode ────────────────────────────────────
 cat > "$KANSHI_MODE_CONF" << 'EOF'
-# kanshi-mode.conf — KANSHI MODE
-# Managed by enable-kanshi / disable-kanshi — do not edit manually.
-exec-once = kanshi
-# source = ~/.config/hypr/monitors.conf
+-- kanshi-mode.lua — KANSHI MODE
+-- Managed by enable-kanshi / disable-kanshi — do not edit manually.
+hl.on("hyprland.start", function() hl.exec_cmd("kanshi") end)
+-- require("monitors")  -- disabled in kanshi mode
 EOF
-echo "kanshi-mode.conf set to kanshi mode."
+echo "kanshi-mode.lua set to kanshi mode."
 
 # ── Start / reload kanshi ─────────────────────────────────────────────────────
 echo ""

@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-KANSHI_MODE_CONF="${KANSHI_MODE_CONF:-$HOME/.config/hypr/kanshi-mode.conf}"
+KANSHI_MODE_CONF="${KANSHI_MODE_CONF:-$HOME/.config/hypr/kanshi-mode.lua}"
 
 # ── Stop kanshi ───────────────────────────────────────────────────────────────
 if killall kanshi 2>/dev/null; then
@@ -19,14 +19,13 @@ else
   echo "Kanshi was not running."
 fi
 
-# ── Switch kanshi-mode.conf to nwg-displays mode ─────────────────────────────
+# ── Switch kanshi-mode.lua to nwg-displays mode ──────────────────────────────
 cat > "$KANSHI_MODE_CONF" << 'EOF'
-# kanshi-mode.conf — NWG-DISPLAYS MODE
-# Managed by enable-kanshi / disable-kanshi — do not edit manually.
-# exec-once = kanshi
-source = ~/.config/hypr/monitors.conf
+-- kanshi-mode.lua — NWG-DISPLAYS MODE
+-- Managed by enable-kanshi / disable-kanshi — do not edit manually.
+require("monitors")
 EOF
-echo "kanshi-mode.conf set to nwg-displays mode."
+echo "kanshi-mode.lua set to nwg-displays mode."
 
 # ── Reload Hyprland ───────────────────────────────────────────────────────────
 echo "Reloading Hyprland..."
