@@ -24,6 +24,17 @@ MONITOR_LEFT="$MONITOR1"    # Workspaces 1-8
 MONITOR_MIDDLE="$MONITOR2"  # Workspaces 9-16
 MONITOR_RIGHT="$MONITOR3"   # Workspaces 17-20
 
+# Hyprland 0.56+ Lua config rejects waybar's legacy "dispatch workspace N"
+# (clicking a workspace). Run waybar behind the command-socket translation shim
+# so those dispatches are rewritten to the Lua form. See
+# ~/hyprconfig/hypr-lua-shim/README.md
+SHIM_DIR="${HOME}/hyprconfig/hypr-lua-shim"
+if [[ -x "$SHIM_DIR/shim-up.sh" ]] && "$SHIM_DIR/shim-up.sh" waybar; then
+    export HYPRLAND_INSTANCE_SIGNATURE="waybar"
+else
+    echo "warning: hypr-lua-shim not available; workspace clicks may not work" >&2
+fi
+
 # Launch top bar
 waybar -c ~/.config/waybar/config-top -s ~/.config/waybar/style.css &
 
