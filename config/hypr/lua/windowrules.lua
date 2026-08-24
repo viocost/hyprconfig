@@ -43,3 +43,10 @@ hl.window_rule({ match = { title = "^(Save File)$" }, size = { 1920, 1080 }, cen
 hl.window_rule({ match = { class = "^(kitty)$" },    focus_on_activate = true })
 hl.window_rule({ match = { class = "^(thunar)$" },   focus_on_activate = true })
 hl.window_rule({ match = { class = "^(Chromium)$" }, focus_on_activate = true })
+
+-- Obsidian desktop app - Settings windows
+hl.window_rule({ match = { class = "^md.obsidian.Obsidian$", title = "^Settings.*" }, float = true })
+
+-- Bitwarden in Chrome - Settings windows
+hl.window_rule({ match = { class = "^chrome-.*" }, float = true })
+hl.window_rule({ match = { title = "^Bitwarden$" }, float = true })

@@ -12,5 +12,7 @@ function csyarn() {
 }
 
 function csnpm() {
-  csq aws codeartifact login --tool yarn
+  cd
+  csq aws codeartifact login --tool npm
+  popd
 }
