@@ -5,19 +5,19 @@
 
 wallpaper {
     monitor = {{MONITOR1}}
-    path = /home/kostia/wallpapers/0305.jpg
+    path = {{WALLPAPER}}
     fit_mode = cover
 }
 
 wallpaper {
     monitor = {{MONITOR2}}
-    path = /home/kostia/wallpapers/0305.jpg
+    path = {{WALLPAPER}}
     fit_mode = cover
 }
 
 wallpaper {
     monitor = {{MONITOR3}}
-    path = /home/kostia/wallpapers/0305.jpg
+    path = {{WALLPAPER}}
     fit_mode = cover
 }
 

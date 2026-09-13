@@ -24,9 +24,12 @@ OUT_ENV="${HOME}/.config/hypr/monitor-env.sh"
 # ── Parse monitor-vars.conf ───────────────────────────────────────────────────
 declare -A MONITORS  # MONITORS[1]=DP-1, MONITORS[2]=DP-6, MONITORS[3]=eDP-1
 
+WALLPAPER_FILE=""
 while IFS= read -r line; do
     if [[ "$line" =~ ^\$monitor([0-9]+)[[:space:]]*=[[:space:]]*([^[:space:]#]+) ]]; then
         MONITORS["${BASH_REMATCH[1]}"]="${BASH_REMATCH[2]}"
+    elif [[ "$line" =~ ^\$wallpaper[[:space:]]*=[[:space:]]*([^[:space:]#]+) ]]; then
+        WALLPAPER_FILE="${BASH_REMATCH[1]}"
     fi
 done < "$VARS_CONF"
 
@@ -35,10 +38,14 @@ for n in 1 2 3; do
         echo "warning: \$monitor${n} not found in ${VARS_CONF}, skipping." >&2
     fi
 done
+if [[ -z "$WALLPAPER_FILE" ]]; then
+    echo "warning: \$wallpaper not found in ${VARS_CONF}, skipping." >&2
+fi
 
 M1="${MONITORS[1]:-}"
 M2="${MONITORS[2]:-}"
 M3="${MONITORS[3]:-}"
+WALLPAPER="${HOME}/wallpapers/${WALLPAPER_FILE}"
 
 # ── Generate monitor-env.sh (sourced by bash scripts) ────────────────────────
 cat > "$OUT_ENV" << EOF
@@ -60,5 +67,6 @@ sed \
     -e "s|{{MONITOR1}}|${M1}|g" \
     -e "s|{{MONITOR2}}|${M2}|g" \
     -e "s|{{MONITOR3}}|${M3}|g" \
+    -e "s|{{WALLPAPER}}|${WALLPAPER}|g" \
     "$TPL" > "$OUT_HYPRPAPER"
 echo "Generated ${OUT_HYPRPAPER}"

@@ -61,20 +61,25 @@ if [[ "${setup_tty,,}" =~ ^y(es)?$ ]]; then
         systemctl enable --now "getty@tty${TTY_NUM}.service"
         echo "✓ Enabled login prompt on tty${TTY_NUM}"
 
-        PROFILE="/home/$USERNAME/.bash_profile"
+        # Written to both bash's and zsh's login-startup files since the
+        # account's shell may change later (e.g. hyprconfig's own installer
+        # runs `chsh -s zsh`), and whichever one matches at login time is
+        # the one that actually needs this.
         MARKER="# Auto-start Hyprland on tty${TTY_NUM} login"
-        if [[ -f "$PROFILE" ]] && grep -qF "$MARKER" "$PROFILE"; then
-            echo "⚠️  Auto-start already configured in $PROFILE — skipping."
-        else
-            cat >> "$PROFILE" <<EOF
+        for PROFILE in "/home/$USERNAME/.bash_profile" "/home/$USERNAME/.zprofile"; do
+            if [[ -f "$PROFILE" ]] && grep -qF "$MARKER" "$PROFILE"; then
+                echo "⚠️  Auto-start already configured in $PROFILE — skipping."
+            else
+                cat >> "$PROFILE" <<EOF
 
 $MARKER
 if [ -z "\${WAYLAND_DISPLAY:-}" ] && [ "\$(tty)" = "/dev/tty${TTY_NUM}" ]; then
     exec start-hyprland
 fi
 EOF
-            echo "✓ '$USERNAME' will auto-start Hyprland when logging in on tty${TTY_NUM}"
-        fi
+                echo "✓ Auto-start added to $PROFILE"
+            fi
+        done
 
         echo ""
         echo "Switch with Ctrl+Alt+F${TTY_NUM} (and back with Ctrl+Alt+F1),"
