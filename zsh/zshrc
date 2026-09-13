@@ -147,7 +147,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 
-export BROWSER=firefox
+export BROWSER=chromium
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
@@ -156,3 +156,32 @@ export ORG_ROAM_DB_PATH=~/.config/emacs/.local/cache/org-roam.db
 
 #PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+
+vlogin() {
+    local varys_list varys_url varys_sts_region
+
+    varys_list="
+    varys-mgmt.eu-west-1.csq.io         | eu-west-1
+    varys-production.eu-west-1.csq.io   | eu-west-1
+    varys-production.us-east-1.csq.io   | us-east-1
+    varys-production.eastus2.csq.io     | us-east-1
+    varys-production.northeurope.csq.io | us-east-1
+    varys-staging.eastus2.csq.io        | us-east-1
+    varys-staging.eu-west-1.csq.io      | eu-west-1
+    varys-dev.eu-west-1.csq.io          | eu-west-1
+    varys-drp.eu-west-1.csq-drp.io      | eu-west-1
+    varys-drptest.eastus2.csq-drp.io    | us-east-1"
+
+    varys_url=$(awk 'NF>1 {print $1}' <<< "$varys_list" | fzf --header "Currently logged in to: ${VAULT_ADDR:-none}") || return 1
+    varys_sts_region=$(awk -v str="$varys_url" '{if ($1 == str) print $3}' <<< "$varys_list" | xargs echo)
+
+    echo "Authenticating to: $varys_url"
+    
+    export VAULT_ADDR="https://$varys_url";
+    export VAULT_TOKEN="$(vault login -token-only -method=aws "region=$varys_sts_region")"
+}
+
+# Qwen Code PATH block begin
+export PATH='/home/kostia/.local/bin':$PATH
+# Qwen Code PATH block end
