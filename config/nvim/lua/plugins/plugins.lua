@@ -177,18 +177,31 @@ return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
-    build = "make",
-    setup = function()
-      local telescope = require("telescope")
-      telescope.extensions.live_grep_args.live_grep_args()
-      telescope.load_extension("fzf")
+    init = function()
+      require("lazyvim.util").on_load("telescope.nvim", function()
+        local telescope = require("telescope")
+        telescope.load_extension("fzf")
+        telescope.load_extension("live_grep_args")
+      end)
     end,
     config = {
       defaults = {
         path_display = { "shorten" },
+        mappings = {
+          -- Freeze grep results and fuzzy-filter them, e.g. `!tests/` to drop test files.
+          -- <C-@> is what many terminals send for <C-Space>.
+          i = {
+            ["<C-g>"] = function(prompt_bufnr)
+              require("telescope.actions").to_fuzzy_refine(prompt_bufnr)
+            end,
+            ["<C-@>"] = function(prompt_bufnr)
+              require("telescope.actions").to_fuzzy_refine(prompt_bufnr)
+            end,
+          },
+        },
       },
     },
   },
