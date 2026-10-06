@@ -20,7 +20,7 @@ workspace = "{id}:{clients}" # {id}, {delim} and {clients} are supported
 # client = "{icon}"
 
 # deduplicate client formatter
-# client_fullscreen = "[{icon}]"
+client_fullscreen = "{icon}" # default is "[{icon}]"; no brackets for fullscreen/maximized windows
 # client_dup = "{client}{counter_sup}"
 # client_dup_fullscreen = "[{icon}]{delim}{icon}{counter_unfocused}"
 # client_dup_active = "*{icon}*{delim}{icon}{counter_unfocused}"
