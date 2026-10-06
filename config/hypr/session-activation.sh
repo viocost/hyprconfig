@@ -1,0 +1,1 @@
+../../scripts/hypr-session-activation.sh

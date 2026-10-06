@@ -18,9 +18,10 @@ hl.config({
         layout           = "dwindle",
     },
 
-    -- Renderer settings for NVIDIA
+    -- Keep the desktop compositor active so layer-shell surfaces (Waybar,
+    -- notifications, and lock screens) remain visible on every output.
     render = {
-        direct_scanout = true,
+        direct_scanout = false,
     },
 
     -- Cursor settings for NVIDIA

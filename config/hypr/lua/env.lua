@@ -7,18 +7,9 @@ local home = os.getenv("HOME") or ""
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
--- NVIDIA GPU configuration (force NVIDIA over Intel iGPU)
-hl.env("WLR_DRM_DEVICES", "/dev/dri/card1")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
-hl.env("GBM_BACKEND", "nvidia-drm")
-hl.env("__GL_GSYNC_ALLOWED", "1")
-hl.env("__GL_VRR_ALLOWED", "1")
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GL_MaxFramesAllowed", "1")
-
--- NVIDIA-specific Wayland fixes
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
-hl.env("NVD_BACKEND", "direct")
+-- This machine's connected outputs use the Intel i915 KMS device. Hyprland's
+-- Aquamarine backend uses AQ_DRM_DEVICES (not wlroots' WLR_DRM_DEVICES).
+hl.env("AQ_DRM_DEVICES", "/dev/dri/card1")
 
 -- Wayland
 hl.env("GDK_BACKEND", "wayland,x11,*")

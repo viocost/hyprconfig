@@ -60,8 +60,14 @@ hl.on("hyprland.start", function()
     -- Generate hyprpaper.conf + monitor-env.sh from monitor-vars.conf
     hl.exec_cmd("apply-monitor-vars")
 
+    -- Reapply the external-output layout after this persistent VT session
+    -- regains DRM master from another account's Hyprland session.
+    hl.exec_cmd("~/.config/hypr/session-activation.sh")
     hl.exec_cmd("~/.config/waybar/launch.sh")
-    hl.exec_cmd("~/hyprconfig/hypr-lua-shim/run.sh autoname hyprland-autoname-workspaces --config ~/.config/hypr/hyprland-autoname-workspaces.toml")
+    -- The auto-renamer's single-instance lock is a global abstract Unix
+    -- socket. Give each local account a network namespace so another account's
+    -- Hyprland session cannot prevent this one from starting.
+    hl.exec_cmd("~/hyprconfig/hypr-lua-shim/run.sh autoname unshare --user --map-root-user --net -- hyprland-autoname-workspaces --config ~/.config/hypr/hyprland-autoname-workspaces.toml")
     hl.exec_cmd("swaync")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("hyprpaper")

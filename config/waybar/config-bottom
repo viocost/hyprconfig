@@ -7,6 +7,7 @@
     "gtk-layer-shell": true,
 
     "include": [
+      "~/.config/waybar/outputs.jsonc",
       "~/.config/waybar/modules.jsonc",
       "~/.config/waybar/modules-cpu.jsonc",
       "~/.config/waybar/modules-memory.jsonc"
