@@ -26,8 +26,8 @@ declare -A MONITORS  # MONITORS[1]=DP-1, MONITORS[2]=DP-6, MONITORS[3]=eDP-1
 
 WALLPAPER_FILE=""
 while IFS= read -r line; do
-    if [[ "$line" =~ ^\$monitor([0-9]+)[[:space:]]*=[[:space:]]*([^[:space:]#]+) ]]; then
-        MONITORS["${BASH_REMATCH[1]}"]="${BASH_REMATCH[2]}"
+    if [[ "$line" =~ ^\$monitor([0-9]+)[[:space:]]*=[[:space:]]*([^#]*[^[:space:]#]) ]]; then
+        MONITORS["${BASH_REMATCH[1]}"]="${BASH_REMATCH[2]}"  # may be "desc:Make Model Serial"
     elif [[ "$line" =~ ^\$wallpaper[[:space:]]*=[[:space:]]*([^[:space:]#]+) ]]; then
         WALLPAPER_FILE="${BASH_REMATCH[1]}"
     fi

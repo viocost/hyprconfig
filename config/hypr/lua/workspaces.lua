@@ -4,8 +4,8 @@
 -- with the external scripts).
 
 local mon = _G.MONITORS or {}
-local m1 = mon[1] or "DP-1"   -- Left monitor
-local m2 = mon[2] or "DP-6"   -- Middle monitor
+local m1 = mon[1] or "desc:Dell Inc. DELL S3221QS 6JQPTB3"   -- Left monitor
+local m2 = mon[2] or "desc:Dell Inc. DELL P2414H 36WJX5CQ36PB"   -- Middle monitor
 local m3 = mon[3] or "eDP-1"  -- Internal laptop monitor
 
 -- Workspace -> monitor assignments (1-8 left, 9-16 middle, 17-20 internal)

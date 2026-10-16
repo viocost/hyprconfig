@@ -18,7 +18,6 @@ local ws_shift = { { "1", 11 }, { "2", 12 }, { "3", 13 }, { "4", 14 }, { "5", 15
 hl.bind(mod .. " + Return",        hl.dsp.exec_cmd("kitty"))
 hl.bind(mod .. " + C",             hl.dsp.exec_cmd("/usr/bin/chromium"))
 hl.bind(mod .. " + D",             hl.dsp.exec_cmd("rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi"))
-hl.bind("F9",                      hl.dsp.exec_cmd("rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi"))
 hl.bind(mod .. " + T",             hl.dsp.exec_cmd("rofi -show window -config ~/.config/rofi/rofidmenu.rasi"))
 hl.bind(mod .. " + F8",            hl.dsp.exec_cmd("thunar"))
 hl.bind(mod .. " + SHIFT + Return", hl.dsp.exec_cmd("thunar"))

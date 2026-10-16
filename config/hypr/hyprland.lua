@@ -17,8 +17,11 @@ do
     local f = io.open(path, "r")
     if f then
         for line in f:lines() do
-            local n, name = line:match("^%s*%$monitor(%d+)%s*=%s*([^%s#]+)")
-            if n and name then
+            local n, name = line:match("^%s*%$monitor(%d+)%s*=%s*([^#]-)%s*$")
+            if not n then
+                n, name = line:match("^%s*%$monitor(%d+)%s*=%s*([^#]-)%s*#")
+            end
+            if n and name and name ~= "" then
                 _G.MONITORS[tonumber(n)] = name
             end
         end

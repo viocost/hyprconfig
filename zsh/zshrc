@@ -181,7 +181,7 @@ vlogin() {
     export VAULT_ADDR="https://$varys_url";
     export VAULT_TOKEN="$(vault login -token-only -method=aws "region=$varys_sts_region")"
 }
-
+eval "$(pay-respects zsh --alias)"
 # Qwen Code PATH block begin
 export PATH='/home/kostia/.local/bin':$PATH
 # Qwen Code PATH block end

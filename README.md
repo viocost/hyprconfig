@@ -78,9 +78,14 @@ hyprconfig/
 │   ├── bar/           # Status bar modules
 │   └── cli/           # CLI tools
 │
+├── docs/               # Runtime config notes (see docs/monitors.md)
 ├── assets/             # Images, fonts, etc.
 └── zsh/               # Shell configuration
 ```
+
+## Docs
+
+- [Monitors](docs/monitors.md) — why monitors are matched by `desc:` (MST connector names change on replug) and how to recover without a reboot
 
 ## What Gets Installed
 
